@@ -1,21 +1,16 @@
-title: OWNSELF
-email: liuzhenming@ownself.org
-description: >- # this means to ignore newlines until "baseurl:"
-  写意程序，写实人生
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ownself
-github_username:  ownself
-
-# Build settings
-# theme: minima
-# remote_theme: daattali/beautiful-jekyll@6.0.1
 ###########################################################
 ### Welcome to Beautiful Jekyll!
 ### This config file is meant for settings that affect your entire website. When you first
 ### set up your website you should go through all these settings and edit them, but after
 ### the initial set up you won't need to come back to this file often.
 ###########################################################
+
+############################
+# --- Required options --- #
+############################
+
+# Name of website
+title: OWNSELF
 
 # Your name to show in the footer
 author: Jimmy Liu
@@ -37,14 +32,17 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-# avatar: "/assets/img/avatar-icon.png"
+avatar: "/assets/img/avatar-icon.png"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
-# round-avatar: true
+round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
 #title-img: /path/to/image
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
 
 #####################################
 # --- Footer social media links --- #
@@ -54,7 +52,7 @@ navbar-links:
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "liuzhenming@ownself.org"
+  email: liuzhenming@ownself.org
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
   # facebook: deanattali
   github: ownself
@@ -67,7 +65,7 @@ social-network-links:
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
-  instagram: ownself
+ instagram: ownself
 #  spotify: yourname
 #  telephone: +14159998888
 #  steam: deanat78
@@ -85,7 +83,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description:  Welcome to OWNSELF
+rss-description:  写意程序，写实人生
 
 ###########################
 # --- General options --- #
@@ -204,11 +202,11 @@ footer-hover-col: "#0085A1"
 # "repository" (make sure the repository is public), (2) Enable Issues in your repository,
 # (3) Install the Utterances app in your repository https://github.com/apps/utterances
 # See more details about the parameters below at https://utteranc.es/
-utterances:
-  repository: ownself/ownself.github.io
-  issue-term: pathname
-  theme: github-light
-  label: blog-comments
+#utterances:
+#  repository: # GitHub username/repository eg. "daattali/beautiful-jekyll"
+#  issue-term: title   # Mapping between blog posts and GitHub issues
+#  theme: github-light # Utterances theme
+#  label: blog-comments # Label that will be assigned to GitHub Issues created by Utterances
 
 # To use Staticman comments, uncomment the following section. You may leave the reCaptcha
 # section commented if you aren't using reCaptcha for spam protection. 
