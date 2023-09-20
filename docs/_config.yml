@@ -9,7 +9,7 @@ github_username:  ownself
 
 # Build settings
 # theme: minima
-# remote_theme: daattali/beautiful-jekyll@6.0.1
+remote_theme: daattali/beautiful-jekyll
 ###########################################################
 ### Welcome to Beautiful Jekyll!
 ### This config file is meant for settings that affect your entire website. When you first
