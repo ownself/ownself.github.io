@@ -28,8 +28,8 @@ twitter_username: ownself
 github_username:  ownself
 
 # Build settings
-theme: minima
-# remote_theme: daattali/beautiful-jekyll@6.0.1
+# theme: minima
+remote_theme: daattali/beautiful-jekyll@6.0.1
 # remote_theme: acallaghan/arkyll
 plugins:
   - jekyll-feed
