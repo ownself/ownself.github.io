@@ -100,7 +100,7 @@ for cmnt in sorted(map(xml_wrapper, dom.getElementsByTagName('wp:comment')), key
     if cmnt.comment_approved != "1": continue
     
     link_name = cmnt.parent.link
-    link_name = link_name.replace("http://www.ownself.org/", '')
+    link_name = link_name.replace("http://www.ownself.org/blog", '')
     link_name = link_name.replace(".html", '')
     # Lookup or create github issue
     # issue = issues_by_post(cmnt.parent.title, url="/".join((settings.URL, "posts", cmnt.parent.title.lower().replace(" ", "-"))))
