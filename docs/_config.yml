@@ -259,10 +259,10 @@ utterances:
 markdown: kramdown
 highlighter: rouge
 # permalink: /:year-:month-:day-:title/
-# paginate: 5
-pagination:
-  enabled: true
-  sort_reverse: true
+paginate: 5
+# pagination:
+#   enabled: true
+#   sort_reverse: true
 
 kramdown:
   input: GFM
@@ -295,7 +295,7 @@ exclude:
   # - docs/
 
 plugins:
-  - jekyll-paginate-v2
+  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
 
