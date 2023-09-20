@@ -18,7 +18,21 @@ tags:
 首先映入眼帘的是链接的问题：
 
 ```
-<pre class="">Undefined symbols for architecture arm64:<br></br>"__swift_FORCE_LOAD_$_swiftCompatibilityDynamicReplacements", referenced from:<br></br>l18787 in XXXXXSDK<br></br>l18872 in XXXXXSDK<br></br>l19410 in XXXXXSDK<br></br>"__swift_FORCE_LOAD_$_swiftCompatibility51", referenced from:<br></br>l18786 in XXXXXSDK<br></br>l18871 in XXXXXSDK<br></br>l19409 in XXXXXSDK<br></br>"__swift_FORCE_LOAD_$_swiftCompatibility50", referenced from:<br></br>l18785 in XXXXXSDK<br></br>l18870 in XXXXXSDK<br></br>l19408 in XXXXXSDK<br></br>ld: symbol(s) not found for architecture arm64<br></br>Error: clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Undefined symbols for architecture arm64:
+"__swift_FORCE_LOAD_$_swiftCompatibilityDynamicReplacements", referenced from:
+l18787 in XXXXXSDK
+l18872 in XXXXXSDK
+l19410 in XXXXXSDK
+"__swift_FORCE_LOAD_$_swiftCompatibility51", referenced from:
+l18786 in XXXXXSDK
+l18871 in XXXXXSDK
+l19409 in XXXXXSDK
+"__swift_FORCE_LOAD_$_swiftCompatibility50", referenced from:
+l18785 in XXXXXSDK
+l18870 in XXXXXSDK
+l19408 in XXXXXSDK
+ld: symbol(s) not found for architecture arm64
+Error: clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 很蹊跷的是同样是iOS平台的framework库，如果是使用Objective-C编写的库，那么使用Unreal的标准库导入流程不会有任何问题，但是一旦引入了Swift库，就会遇到上述的链接问题。
@@ -52,7 +66,8 @@ tags:
 “Library Search Paths”还是比较容易的，UBT开放了接口，可以在\*.build.cs中通过添加如下代码来实现（或者明确的将.a拷贝至UE工程内再通过PublicAdditionalLibrary添加）：
 
 ```
-<pre class="">PublicSystemLibraryPaths.Add("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos");<br></br>PublicSystemLibraryPaths.Add("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/iphoneos");
+PublicSystemLibraryPaths.Add("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos");
+PublicSystemLibraryPaths.Add("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/iphoneos");
 ```
 
 但剩下两项我们并没有在UBT中找到开放的接口供我们修改，在有限的尝试失败后，我阅读了一些UBT的代码，最终我们决定通过修改UBT来实现上述改动：

@@ -35,13 +35,13 @@ Unity中合批性能最好的GPU Instancing的要求之一是使用相同的模�
 
 为了保证使用了统一Quad模型的MeshRenderer在渲染Sprite的时候可以将Sprite正确的大小和偏移表现正确，我们需要计算好尺寸与偏移，并将其保存在MaterialPropertyBlock中，以供顶点着色器可以在世界坐标变换前，先在模型空间根据这些信息进行变换以复现SpriteRenderer中原本的坐标位置。
 
-这里需要特别注意的是SpriteRenderer中生成的Mesh和Unity内建的Quad的Mesh虽然都是两个三角形，但是顶点和索引的顺序确实完全不同的，这个暗坑耽误了我不少的时间。  
+这里需要特别注意的是SpriteRenderer中生成的Mesh和Unity内建的Quad的Mesh虽然都是两个三角形，但是顶点和索引的顺序确实完全不同的，这个暗坑耽误了我不少的时间。 
+
 ![](http://www.ownself.org/blog/wp-content/uploads/2022/03/UnitySpriteGPUInstancing.png)
 
 计算尺寸和偏差的逻辑代码：
 
 ```
-<pre class="wp-block-code">```
 // 根据Sprite的尺寸和偏移计算Quad的缩放与平移关系
 Pivot.x = sprite.rect.width / sprite.pixelsPerUnit;
 Pivot.y = sprite.rect.height / sprite.pixelsPerUnit;
@@ -53,12 +53,10 @@ newUV.y = sprite.uv[0].y - sprite.uv[2].y;
 newUV.z = sprite.uv[2].x;
 newUV.w = sprite.uv[2].y;
 ```
-```
 
 然后我们在VS中通过手工生成变换矩阵的方式在世界变换之前应用正确的缩放与平移变换：
 
 ```
-<pre class="wp-block-code">```
 half4 pivot = UNITY_ACCESS_INSTANCED_PROP(Props, _Pivot);
 // 生成缩放平移矩阵
 half4x4 m;
@@ -83,8 +81,6 @@ vertexInput.positionWS = TransformObjectToWorld(vertexInput.positionWS).xyz;
 // ......
 // 将变换后的UV赋值给片元的数据结构
 output.uv.xy = uv.xy;
-
-```
 ```
 
 # 贴图数组
@@ -108,7 +104,6 @@ Texture Array的准备相对要简单很多，我们可以在Loading时候创建
 另外Unity从2018开始已经为GPU Instancing实现了对Light Probe的支持，但支持是依赖引擎中的一些固定操作的，因此我们需要保证我们的Shader中一些变量声明符合引擎中的规范，才能保证Light Probe可以正确的配合GPU Instancing工作。我们需要将Light Probe有关的变量以明确的命名并确保他们声明在”UnityPerDraw”的CBUFFER字段中。
 
 ```
-<pre class="wp-block-code">```
 CBUFFER_START(UnityPerDraw)
 // SH block feature
 real4 unity_SHAr;
@@ -120,30 +115,26 @@ real4 unity_SHBb;
 real4 unity_SHC;
 CBUFFER_END
 ```
-```
 
 在计算颜色的过程就可以使用引擎内置的计算方式来进行球谐的计算（运算逻辑来自URP内置球谐计算函数SampleSH9()）
 
 ```
-<pre class="wp-block-code">```
 // Linear + constant polynomial terms
 float3 res = SHEvalLinearL0L1(output.normal.xyz, unity_SHAr, unity_SHAg, unity_SHAb);
- 
+
 // Quadratic polynomials
 res += SHEvalLinearL2(output.normal.xyz, unity_SHBr, unity_SHBg, unity_SHBb, unity_SHC);
- 
+
 #ifdef UNITY_COLORSPACE_GAMMA
     res = LinearToSRGB(res);
 #endif
- 
+
 output.vertexSH.xyz = max(half3(0, 0, 0), res);
-```
 ```
 
 而在C#中，我们需要通过引擎提供的接口手动计算出球谐系数并将他们拷贝到MaterialPropertyBlock中，引擎同样提供了接口帮助我们完成；最后我们还要需要将Render的Light Probe Usage设定为”CustomProvided”，这样引擎可以正确的知道我们准备利用CBUFFER来进行球谐系数的保存。
 
 ```
-<pre class="wp-block-code">```
 // Set Light Probe info
 Vector3[] position = new Vector3[1] { transform.position };
 SphericalHarmonicsL2[] lightProbes = new SphericalHarmonicsL2[1];
@@ -156,7 +147,6 @@ materialPropertyBlock.CopyProbeOcclusionArrayFrom(occlusionProbes);
  
 // We have to set light probe mode to "CustomProvided", so Unity will copy and use them into CBUFFER
 meshRenderer.lightProbeUsage = LightProbeUsage.CustomProvided;
-```
 ```
 
 # 动态Atlas
@@ -174,5 +164,6 @@ meshRenderer.lightProbeUsage = LightProbeUsage.CustomProvided;
 
 这篇文章中的优化方案其实还是需要一些先决条件的，如果你们的工程也符合这些先决条件，又刚好需要类似的优化内容，那么希望这个方案可以帮到你，如果不能，也希望能为你提供一些思路。
 
-项目中的资源不好公开出来，所以我将核心思路实现在了一个简单的[示例工程](https://github.com/ownself/UnitySpriteGPUInstancing)中，有需要的话，请自行参考，如果有发现问题或者更好的改进方案，也请不吝赐教。  
+项目中的资源不好公开出来，所以我将核心思路实现在了一个简单的[示例工程](https://github.com/ownself/UnitySpriteGPUInstancing)中，有需要的话，请自行参考，如果有发现问题或者更好的改进方案，也请不吝赐教。
+
 ![](http://www.ownself.org/blog/wp-content/uploads/2022/03/SpriteInstancingResult.png)

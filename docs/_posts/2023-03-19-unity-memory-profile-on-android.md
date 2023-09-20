@@ -23,7 +23,6 @@ ADB是Linux提供系统级的工具，功能丰富且强大，其中对于内存
 adb中最常用也是最主要的内存分析工具，其会输出应用程序关于内存总体及在各个类别的统计数据，并输出类似如下格式的信息：
 
 ```
-<pre class="wp-block-code">```
 App Summary
                        Pss(KB)                        Rss(KB)
                         ------                         ------
@@ -38,12 +37,11 @@ App Summary
 
            TOTAL PSS:  1157454            TOTAL RSS:  1272392       TOTAL SWAP PSS:       27
 ```
-```
 
 其中我们可以通过下面的App Summary的信息段来了解应用程序的内存不同部分的用量：
 
 - **Java Heap**：Java相关代码的内存分配，在Unity项目中，这部分用量通常不大。
-- **Native Heap**：C/C++代码中直接通过malloc分配的内存，在Unity项目中由于Unity底层的内存分配主要使用VirtualAlloc的方式，所以绝大部分会归类到Unknown类别中，因此这部分内存通常也不应过大，主要包含Mono或者il2cpp的虚拟机，部分图形API的驱动内存分配，以及项目中一些第三方Native Plugin也会造成一些这部分的潜在内存分配。**这部分的内存用量可以通过Google提供Perfetto工具来进行抓取和分析**（https://perfetto.dev/），但要注意的是Perfetto工具目前支持的机型还相对比较有限。
+- **Native Heap**：C/C++代码中直接通过malloc分配的内存，在Unity项目中由于Unity底层的内存分配主要使用VirtualAlloc的方式，所以绝大部分会归类到Unknown类别中，因此这部分内存通常也不应过大，主要包含Mono或者il2cpp的虚拟机，部分图形API的驱动内存分配，以及项目中一些第三方Native Plugin也会造成一些这部分的潜在内存分配。**这部分的内存用量可以通过Google提供Perfetto工具来进行抓取和分析** （[Perfetto](https://perfetto.dev/)） ，但要注意的是Perfetto工具目前支持的机型还相对比较有限。
 - **Code**：映射的so/jar/apk/dex/oat/art等代码文件所占用的内存，在Unity项目中这部分代码**最主要的用量来自libunity.so和libil2cpp.so两个文件**。需要注意的Android系统的工作机制是逐渐读取代码文件，只有在需要使用发现缺页时才会去实际分配并载入文件中相关部分，而且随着系统内存的整体情况的变化，这部分内存也最有可能会Swap-out出去。此外要注意PSS与RSS内存统计在这个类别中也是区别最大的，其中**RSS内存会将程序所使用到的系统级的代码文件计算在内**，而这部分文件又通常由许多应用程序所共享的，**PSS数据则会将共享的部分按照所涉及的应用程序数据所平分**，对于我们的内存分析来说，这部分**更准确的数据应该参考Private Dirty + Clean**。
 - **Graphics**：GPU部分的内存用量，在Unity的项目中，Mesh数据和Texture的数据应属于这部分类别。在我们的观测中，发现**部分个别设备会出现关于这个类别的统计偏差**，其会将本属于该类别的内存归类到Unknown中。
 - **Unknown**：adb将内存中所有匿名申请及无法溯源的内存归类于此，这也是Unity引擎中内存分配的主要来源，**包括了Unity引擎中绝大多数C++的内存分配和C#的Managed Heap的内存分配**，以及一些来自第三方Native Plugin的内存分配，例如Wwise。**这部分的内存我们可以主要通过Unity Memory Profiler来进行分析**。
@@ -78,7 +76,6 @@ App Summary
 该命令用于详细打印出应用程序的详细内存映像信息，并输出类似如下格式的信息：（由于该命令输出内容较多，所以通常我们通过”&gt; \*\*.txt”将其结果输出至指定文本文件中）
 
 ```
-<pre class="wp-block-code">```
 Address            Kbytes     PSS   Dirty    Swap  Mode  Mapping
 0000000012c00000  524288   11884   11884       0 rw---  [anon:dalvik-main space (region space)]
 000000006f04a000    2620    1278    1256       4 rw---  boot.art]
@@ -100,9 +97,6 @@ Address            Kbytes     PSS   Dirty    Swap  Mode  Mapping
 ----------------  ------  ------  ------  ------
 total           20713476  656271  532504    1556
 ```
-```
-
-> 
 
 这个命令向我们非常详细的展示了应用在内存中所处的每一个段落的信息（相信adb meminfo也是通过这些信息来汇总分析），其mapping信息可以帮助我们验证adb meminfo中相关类别的数据信息。
 
@@ -197,4 +191,6 @@ ADB数据中反应的是反映了系统实际所使用的物理内存页的情�
 
 利用这样的方法我们将ADB所统计的内存用量，更清晰的划分为类似下图的内存分配图（Graphics可更进一步统计出Mesh与Texture2D的用量占比），以帮助我们了解项目的内存使用情况，并针对性的展开相关部分的优化与改进工作。
 
-<div class="wp-block-image"><figure class="aligncenter size-large">![](http://www.ownself.org/blog/wp-content/uploads/2023/03/1c5e7198-9777-46fe-9630-fb116b4653a8-1024x792.png)<figcaption class="wp-element-caption">通过分析流程所获取的内存用量分布饼图</figcaption></figure></div>
+![](http://www.ownself.org/blog/wp-content/uploads/2023/03/1c5e7198-9777-46fe-9630-fb116b4653a8-1024x792.png)
+
+通过分析流程所获取的内存用量分布饼图

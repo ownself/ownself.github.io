@@ -1,8 +1,0 @@
----
-layout: post
-title:  "博客测试"
-date:   2023-09-17 22:10:10 +0800
-categories: test
----
-来试试效果怎么样？
-
