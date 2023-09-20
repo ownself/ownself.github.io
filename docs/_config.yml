@@ -23,13 +23,13 @@ email: liuzhenming@ownself.org
 description: >- # this means to ignore newlines until "baseurl:"
   写意程序，写实人生
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ownself.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ownself
 github_username:  ownself
 
 # Build settings
-# theme: minima
-remote_theme: daattali/beautiful-jekyll@6.0.1
+theme: minima
+# remote_theme: daattali/beautiful-jekyll@6.0.1
 # remote_theme: acallaghan/arkyll
 plugins:
   - jekyll-feed
