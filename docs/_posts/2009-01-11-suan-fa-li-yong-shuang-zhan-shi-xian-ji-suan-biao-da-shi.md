@@ -11,7 +11,7 @@ categories:
 ---
 
 ```
-<pre class="lang:c++ decode:true ">struct Operator
+struct Operator
 {
 	OperatorType OpType;
 	int Value; //如果是操作数则为数值，若是运算符则为优先级表中下标

@@ -23,7 +23,7 @@ Unity提供了使用Native Plugin的机制，允许Unity使用其他Native语言
 打开使用Unity Editor生成的Xcode Project File，打开“Libraries/RegisterMonoModules.cpp”，你就会发现这个问题其实并不是因为iOS的Simulator有什么天生的缺陷，而是Unity在里面做了些手脚：
 
 ```
-<pre class="font:droid-sans-mono lang:c++ decode:true ">#if !(TARGET_IPHONE_SIMULATOR)
+#if !(TARGET_IPHONE_SIMULATOR)
     ...
     void    mono_dl_register_symbol (const char* name, void *addr);
     ...

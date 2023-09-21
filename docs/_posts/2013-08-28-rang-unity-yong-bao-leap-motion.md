@@ -23,7 +23,7 @@ Leap Motion是目前非常时髦的外设，为体感操作带来了新的尝试
 其中Leap.Controller是最关键的控制器，可以在开始通过new Leap.Controller()来创建，而Frame和Hand则都通过Controller来获取，最简单的方式是放在Update()中来更新：
 
 ```
-<pre class="lang:default decode:true" title="获取Leap.Hand">public static void Update() 
+public static void Update() 
 {
 	m_Hand = null;
 	m_Frame = null;

@@ -21,8 +21,7 @@ categories:
 当我们确定脚本不会再执行时，我们可以通过luaL\_unref(luaState, referenceID, LUA\_REGISTRYINDEX)来表明我们已经不需要这个Chunk了，之后GC会在合适的时机释放掉它。
 
 ```
-<pre class="font:droid-sans-mono lang:c++ decode:true " title="Lua脚本的编译缓存">void CompileLuaScript(const char* script) {
-
+void CompileLuaScript(const char* script) {
     if (!HasScriptCompiled(script)) {// Haven't compiled
         const char* luaString = getLuaString(script);
         if (luaString != NULL) {

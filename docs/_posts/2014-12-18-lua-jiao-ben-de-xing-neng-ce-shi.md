@@ -22,7 +22,7 @@ C#的Lua我们用的是云风团队出品的UniLua，对C#的Lua库了解不太�
 测试主要考虑了三个因素，编译Lua脚本的速度、调用Lua函数的速度以及Lua脚本内执行的速度，并通过几个因素之间不同的循环次数组合，并统计前后时间差来进行测试的，以下是测试的代码片段：
 
 ```
-<pre class="font:droid-sans-mono lang:c++ decode:true" title="C++测试代码片段">SYSTEMTIME time;
+SYSTEMTIME time;
 GetSystemTime(&time);
 // printf("%d, %d,n", time.wSecond, time.wMilliseconds);
 int startTime = time.wSecond * 1000 + time.wMilliseconds;
@@ -38,7 +38,7 @@ printf("Used %d millisecondsn", gapTime);
 ```
 
 ```
-<pre class="font:droid-sans-mono lang:lua decode:true " title="Lua测试代码片段">function measureINT()
+function measureINT()
   num = 1024
   for i=1, num do
     local a = 1

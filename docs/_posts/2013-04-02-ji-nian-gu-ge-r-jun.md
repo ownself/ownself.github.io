@@ -10,7 +10,9 @@ categories:
     - 杂感
 ---
 
-[![Google Reader](http://ownself.org/blog/wp-content/uploads/2013/08/googlereader-150x150.jpg)](http://ownself.org/blog/wp-content/uploads/2013/08/googlereader.jpg)互联网诞生至今，有两样东西是我最喜欢的，一个是Email，另一个是Blog，喜欢它们的程度以至于在我向往的极端世界里，这两样东西对于互联网就足够了，邮件是你和别人联系的最本质的方式，而博客，则是你表达自己的最佳途径。
+[![Google Reader](/wp-content/uploads/2013/08/googlereader-150x150.jpg)](/wp-content/uploads/2013/08/googlereader.jpg)
+
+互联网诞生至今，有两样东西是我最喜欢的，一个是Email，另一个是Blog，喜欢它们的程度以至于在我向往的极端世界里，这两样东西对于互联网就足够了，邮件是你和别人联系的最本质的方式，而博客，则是你表达自己的最佳途径。
 
 谷歌是一个伟大的公司，我很喜欢它，不仅仅是因为它干净快速的搜索，而且是因为它有着Gmail和Google Reader这两样我最喜欢的东西的最佳产品！Gmail毫无疑问是这个世界上你所能拥有的最棒的邮件服务，而Google Reader则是将所有的以往孤立着的博客们紧紧的联系在了一起。
 
@@ -22,6 +24,6 @@ categories:
 
 停掉GR在很多谷歌Geek的心中都是一道分水岭，如果细分析的话不难明白像GR这种产品确实是很难有利可图的，不仅仅是因为GR或者博客这些产品更严肃更远离普通百姓（好吧，QQ还有微博这样的东西更贴近百姓……），但停掉它却会让人们心中那个曾经的谷歌越发飘渺，而眼前的则是一个为了追赶Facebook而残酷推行Google+的商业公司。
 
-GR被停掉已经是一件无法挽回的事情了，需要我花一段时间来寻找一个合适的代替品，也许会是FlipBoard，也许会是Feedly，它们也许会在未来把GR这几年停止更新的空缺补上，带来更好的信息筛选和汇总，以及更棒的阅读体验，但是就像我3年前的推荐文章[《谷歌阅读器》](http://www.ownself.org/blog/2010/gu-ge-yue-du-qi-Google-Reader.html "谷歌阅读器")说到的一样：电子阅读一定会完全代替传统的纸质阅读，而GR始终是这个历史过程中的一次伟大的尝试！！
+GR被停掉已经是一件无法挽回的事情了，需要我花一段时间来寻找一个合适的代替品，也许会是FlipBoard，也许会是Feedly，它们也许会在未来把GR这几年停止更新的空缺补上，带来更好的信息筛选和汇总，以及更棒的阅读体验，但是就像我3年前的推荐文章[《谷歌阅读器》](https://www.ownself.org/2010/gu-ge-yue-du-qi-Google-Reader.html "谷歌阅读器")说到的一样：电子阅读一定会完全代替传统的纸质阅读，而GR始终是这个历史过程中的一次伟大的尝试！！
 
 希望谷歌眼镜能让谷歌重新找回创新。

@@ -15,7 +15,7 @@ categories:
 1.最基本的追逐和闪躲：就是根据目标的坐标来更新追逐者的坐标，躲闪的则向相反的方向更新即可。
 
 ```
-<pre class="lang:default decode:true ">if (A.x > B.x)
+if (A.x > B.x)
 	A.x--;
 else if (A.x < B.x)
 	A.x++;
@@ -32,7 +32,7 @@ else if (A.y < B.y)
 2.视觉追逐：追逐的过程不再简单的基于坐标，而是基于追逐者与目标的方向，使用这种方法的时候，当目标不动时，运动轨迹将成直线，但是当目标处于运动状态时，轨迹则可能是弯弯曲曲的。另外使用这种方法如果是在类似于方格地图中运动的游戏时，还需要用到例如Bresenham算法来实现坐标到方格的投射转换。
 
 ```
-<pre class="lang:default decode:true">Vec u = B.position - A.position; // 计算AB向量  
+Vec u = B.position - A.position; // 计算AB向量  
 Normalize(&u); // 向量u单位化 
 A += u * A.speedvalue;
 ```
@@ -46,7 +46,7 @@ A += u * A.speedvalue;
 伪代码如下：
 
 ```
-<pre class="lang:default decode:true ">Object a,b; // A为追逐者，B为目标
+Object a,b; // A为追逐者，B为目标
 Vec v = a.speed - b.speed;
 Vec s = a.position - b.position;
 Time t = Magnitude(s) / Magnitude(v);//模相除
@@ -61,5 +61,6 @@ a.position += a.speed;
 
 ![](/wp-content/uploads/2009/02/3.jpg)
 
-这个算法在程序中需要每帧执行，也就是说即使目标进行随机运动，追逐者也会审时度势的调整方向，继续追踪，为了加深理解，写了程序来测试这段算法，[点击下载](http://cid-507861a5ffb49bea.skydrive.live.com/self.aspx/.Public/%e7%a8%8b%e5%ba%8f%e4%bb%a3%e7%a0%81/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e7%bb%83%e4%b9%a0%7C_%e6%8b%a6%e6%88%aa.rar)，不过经过测试发现这个算法还是有一定局限性，由于算法是一个趋向性的过程，通常情况下，会在起步一段后便能固定下追逐的方向，但是当追逐者原本的方向与目标的方向相似到一定程度时，也就是说速度向量的模小到一定程度的时候，追逐点会呈现出越来越远的趋势，而这是并不合理的。  
+这个算法在程序中需要每帧执行，也就是说即使目标进行随机运动，追逐者也会审时度势的调整方向，继续追踪，为了加深理解，写了程序来测试这段算法，[点击下载](http://cid-507861a5ffb49bea.skydrive.live.com/self.aspx/.Public/%e7%a8%8b%e5%ba%8f%e4%bb%a3%e7%a0%81/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e7%bb%83%e4%b9%a0%7C_%e6%8b%a6%e6%88%aa.rar)，不过经过测试发现这个算法还是有一定局限性，由于算法是一个趋向性的过程，通常情况下，会在起步一段后便能固定下追逐的方向，但是当追逐者原本的方向与目标的方向相似到一定程度时，也就是说速度向量的模小到一定程度的时候，追逐点会呈现出越来越远的趋势，而这是并不合理的。
+
 PS:测试程序要想编译通过的话需要DirectX SDK，呵呵，我实在不擅长用MFC写GUI程序。

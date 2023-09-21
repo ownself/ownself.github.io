@@ -17,7 +17,7 @@ categories:
 ### 加密
 
 ```
-<pre class="lang:c++ decode:true " title="加密">// strSrc为源码, strKey为附加码
+// strSrc为源码, strKey为附加码
 CString Encrypt(const CString& strSrc, CString strKey)
 {
 	int nKeyLen = strKey.GetLength();
@@ -53,7 +53,7 @@ CString Encrypt(const CString& strSrc, CString strKey)
 ### 解密
 
 ```
-<pre class="lang:c++ decode:true" title="解密">// strSrc为目标码, strKey为附加码, 须一致 
+// strSrc为目标码, strKey为附加码, 须一致 
 CString Decrypt(const CString& strSrc, CString strKey)
 {
 	int nKeyLen = strKey.GetLength();

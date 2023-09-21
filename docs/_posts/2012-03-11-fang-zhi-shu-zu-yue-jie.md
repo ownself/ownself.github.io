@@ -21,7 +21,7 @@ categories:
 使用模版类来预防下标越界原理很简单，一目了然，利用模版类来记下数组的容量，重载”\[\]”运算符，并在重载的实现内做下标访问的检测：
 
 ```
-<pre class="decode:true ">template< class sType, int SIZE > 
+template< class sType, int SIZE > 
 class SafeStruct 
 { 
 public: 
@@ -53,7 +53,7 @@ private:
 对于二维数组可以用同样的方法：
 
 ```
-<pre class="decode:true ">//for 2D arrays 
+//for 2D arrays 
 template< class sType, int ROWSIZE, int COLSIZE > 
 class SafeStruct2D 
 { 

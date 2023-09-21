@@ -12,5 +12,6 @@ categories:
     - 历程
 ---
 
-这个截图留下来~~~纪念~~  
+这个截图留下来~~~纪念~~
+
 [![love](/wp-content/uploads/2012/04/love_thumb.jpg "love")](/wp-content/uploads/2012/04/love.jpg)

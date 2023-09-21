@@ -15,7 +15,7 @@ categories:
 在程序的App::InitInstance()中添加信号量判断部分：
 
 ```
-<pre class="lang:c++ decode:true ">// 用应用程序名创建信号量
+// 用应用程序名创建信号量
 HANDLE hSem = CreateSemaphore(NULL, 1, 1, m_pszAppName);
 // 信号量存在，则程序已有一个实例运行
 if (GetLastError() == ERROR_ALREADY_EXISTS)
@@ -50,12 +50,8 @@ if (GetLastError() == ERROR_ALREADY_EXISTS)
 
 在程序的OnCreate()中为实例设置标记：
 
-```
-<pre class="lang:c++ decode:true ">::SetProp(m_hWnd,::AfxGetApp()->m_pszAppName,(HANDLE)1);
-```
+> ::SetProp(m_hWnd,::AfxGetApp()->m_pszAppName,(HANDLE)1);
 
 最后在程序的退出部分，删除掉添加的标记，可以在对话框的OnDestroy中：
 
-```
-<pre class="lang:c++ decode:true">::RemoveProp(m_hWnd,::AfxGetApp()->m_pszAppName);
-```
+> ::RemoveProp(m_hWnd,::AfxGetApp()->m_pszAppName);

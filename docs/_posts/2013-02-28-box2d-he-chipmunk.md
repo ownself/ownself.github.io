@@ -30,7 +30,7 @@ b2FixureDef：定义形状的，表示刚体形状的具体物理特性，比如
 我们可以通过一小段代码来了解Box2D是如何来创建这些对象的：
 
 ```
-<pre class="lang:c++ decode:true" title="创建Box2D">b2Vec2 gravity = b2Vec2(0.0f,-10.0f); //设置重力
+b2Vec2 gravity = b2Vec2(0.0f,-10.0f); //设置重力
 bool allowBodiesToSleep = true; //是否设置静态物体休眠
 world = new b2World(gravity, allowBodiesToSleep); //创建物理世界
 
@@ -83,7 +83,7 @@ Box2D使用”米”作为刻度衡量单位有另一个考虑是出于性能上
 在cocos2d中如果我们想把b2Body和CCSprite关联起来：
 
 ```
-<pre class="lang:c++ decode:true">void KitchenMainScene::tick(float dt)
+void KitchenMainScene::tick(float dt)
 {
     m_world->Step(dt, 10, 10);
     for(b2Body *b = m_world->GetBodyList(); b; b=b->GetNext())
@@ -103,7 +103,7 @@ b2World的函数Step()负责更新物理世界，后面两个参数代表着模�
 Box2D的碰撞检测是通过b2ContactListenner来实现的，如果你想接受来自碰撞的回调，你需要创建一个继承自b2ContactListener的新类：
 
 ```
-<pre class="lang:c++ decode:true">#include "Box2D.h"
+#include "Box2D.h"
 class ContactListener : public b2ContactListener
 {
      void BeginContact(b2Contact* contact);
@@ -114,7 +114,7 @@ class ContactListener : public b2ContactListener
 BeginContact()和EndContact()会在碰撞发生时被调用，如果要让Listener生效，需要在创建b2World时为他附上这个监听者：
 
 ```
-<pre class="lang:c++ decode:true">ContactListener* contactListener = new ContactListener();
+ContactListener* contactListener = new ContactListener();
 m_world->SetContactListener(contactListener );
 ```
 
@@ -123,7 +123,7 @@ m_world->SetContactListener(contactListener );
 我在实际的开发中并没有使用过Chipmunk，所以我只能浅显的介绍一下Chipmunk的大概，更多的需要朋友们自己去查看文档，但我想我们了解了Box2D所创建的物理世界，那么理解Chipmunk应该是异曲同工的，Chipmunk和Box2D最大的不同在于它是C风格的实现，在Chipmunk中把物理世界称为Space而不是World，创建也很简单：
 
 ```
-<pre class="lang:c++ decode:true">cpInitChipmunk();
+cpInitChipmunk();
 
 cpSpace* space = cpSpaceNew(); //cpSpaceFree(space);是释放函数
 space->iterations = 8;     //迭代次数
@@ -133,7 +133,7 @@ space->gravity = CGPointMake(0,-100);
 Chipmunk中不需要将像素转换成米，而是直接使用像素大小来表示，创建静态的body同样简单：
 
 ```
-<pre class="lang:c++ decode:true">float mass = INFINITY;//质量
+float mass = INFINITY;//质量
 float inertia = INFINITY;//摩擦系数
 cpBody* staticBody = cpBodyNew(mass, inertia);
 ```
@@ -143,7 +143,7 @@ cpBody* staticBody = cpBodyNew(mass, inertia);
 Chipmunk的更新类似于Box2D的Step()函数，由一个cpSpaceStep(space, dtTime)来负责。而与CCSprite的同步是通过一个cpSpaceHashEach来遍历循环的：
 
 ```
-<pre class="lang:c++ decode:true">cpSpaceHashEach(space->activeShapes, &forEachShape, nil);
+cpSpaceHashEach(space->activeShapes, &forEachShape, nil);
 cpSpaceHashEach(space->staticShapes, &forEachShape, nil);
 ```
 

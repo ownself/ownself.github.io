@@ -17,7 +17,7 @@ categories:
 首先是三个辅助函数：
 
 ```
-<pre class="lang:default decode:true ">//判断是否完成过正确的注册 
+//判断是否完成过正确的注册 
 bool IsCdKeyRegisted()
 {
 	CString strFilePath;
@@ -73,7 +73,7 @@ void RegisterCdKey(CString myCdKey)
 然后是判断部分，放在昨天的#ifdef-#endif中的#else即可：
 
 ```
-<pre class="lang:default decode:true ">#else
+#else
 	////******************************
 	////检测CDKEY注册
 	if (!IsCdKeyRegisted())

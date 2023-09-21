@@ -50,7 +50,7 @@ tags:
 ### 示例
 
 ```
-<pre class="font:droid-sans-mono lang:c# decode:true" title="C#代码规范示例">// a sample class for coding standard
+// a sample class for coding standard
 public class SampleClass : ISampleInterce {
 
     // Enum

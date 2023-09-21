@@ -259,7 +259,7 @@ utterances:
 markdown: kramdown
 highlighter: rouge
 # permalink: /:year-:month-:day-:title/
-paginate: 5
+paginate: 10
 # pagination:
 #   enabled: true
 #   sort_reverse: true

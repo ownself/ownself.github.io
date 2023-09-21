@@ -14,7 +14,7 @@ categories:
 判断部分放在程序初始化部分之前即可。
 
 ```
-<pre class="lang:c++ decode:true" title="利用注册表实现限制时间的共享版本">#define SHAREVERSION //共享版本
+#define SHAREVERSION //共享版本
 #ifdef SHAREVERSION
 ////******************************
 HKEY key;

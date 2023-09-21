@@ -21,7 +21,7 @@ tags:
 怎么办呢，今天花了点时间搞鼓一下，简单的方法是将stdout重定向到文件上，你可以直接在项目工程文件的”Properties”里的”Debugging”的”Command Arguments”里添加“&gt;LuaOutput.txt 2&gt;LuaError.txt”，这样改动最小；你也可以在代码中来指定重定向文件：
 
 ```
-<pre class="font:droid-sans-mono lang:c++ decode:true" title="重定向stdout">freopen("luaOutput.txt", "w", stdout);
+freopen("luaOutput.txt", "w", stdout);
 freopen("luaError.txt", "w", stderr);
 ```
 
@@ -30,7 +30,7 @@ freopen("luaError.txt", "w", stderr);
 当然你肯定会说更简洁的办法是直接修改Lua库用OutputDebugString来代替printf让log出现在Windows的output窗口中，但考虑到将来调试Lua的很大一部份工作将是由Designer来进行的，而他们显然是不希望和VS打交道的，所以我能马上想到的是如果能在启动游戏的同时再开一个Console窗口来负责显示Lua的log信息就好了，虽然这个方法感觉很笨，但似乎是目前暂时能想到的最好的了。
 
 ```
-<pre class="font:droid-sans-mono lang:c++ decode:true" title="将stdout重定向到单独的console窗口">#if defined(WIN32) && defined(_DEBUG)
+#if defined(WIN32) && defined(_DEBUG)
 // For Lua Scripting print
 #include <Windows.h>
 

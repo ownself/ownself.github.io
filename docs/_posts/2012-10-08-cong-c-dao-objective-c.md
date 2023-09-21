@@ -27,7 +27,7 @@ Objective-C是上世纪八十年代以C语言为基础完成的早期设计，�
 其中声明是通过@interface关键字来描述：
 
 ```
-<pre class="lang:objc decode:true" title="类的声明">@interface NewClassName: ParentClassName  //类名及父类
+@interface NewClassName: ParentClassName  //类名及父类
 {
     memberDeclarations;  //成员变量
 }
@@ -42,7 +42,7 @@ Objective-C是上世纪八十年代以C语言为基础完成的早期设计，�
 实现部分是由@implementation开始的：
 
 ```
-<pre class="lang:objc decode:true" title="类的实现">@implementation NewClassName
+@implementation NewClassName
   …//methodDefinitions;
 @end
 ```
@@ -50,7 +50,7 @@ Objective-C是上世纪八十年代以C语言为基础完成的早期设计，�
 函数的声明格式：
 
 ```
-<pre class="lang:objc decode:true" title="函数声明">+ (type) functionName;    //静态成员函数不带参数
++ (type) functionName;    //静态成员函数不带参数
 - (type) functionName;    //成员函数不带参数
 - (type) functionName: (type) parm1;    //一个参数
 - (type) functionName: (type) parm1 parmName (type) parm2;    //两个参数，parmName可以省略
@@ -59,7 +59,7 @@ Objective-C是上世纪八十年代以C语言为基础完成的早期设计，�
 函数的调用格式：
 
 ```
-<pre class="lang:objc decode:true " title="函数调用">[object functions];    //无参数
+[object functions];    //无参数
 [object functions:parm];  //一个参数
 [object functions:parm1 parmName:parm2];  //两个参数
 ```
@@ -89,7 +89,7 @@ autorelease消息则是通知系统把该对象加入到autorelease pool中，�
 Obj-C中还有一个概念是分类，分类不同于子类，只是对原有类的一种快捷的拓展，可以在原有类的基础上添加新的方法，但是如果需要添加变量的话还是需要子类来实现。
 
 ```
-<pre class="lang:objc decode:true " title="分类">@interface className (newclassName)
+@interface className (newclassName)
 ……//New functions
 @end
 ```
@@ -99,13 +99,13 @@ Obj-C中还有一个概念是分类，分类不同于子类，只是对原有类
 协议是Obj-C中另一个非常重要的概念，协议实质上是一种供多个类分享的一种方法列表，在协议中规定的方法本身没有任何实现方法，而是由采用协议者来实现，例如我们编写的某个类希望采用一个协议，那么只需要在@interface部分添加尖括号部分即可：
 
 ```
-<pre class="lang:objc decode:true " title="采用协议">@interface classeName: parentClass <protocolName1,protocolName2 … >
+@interface classeName: parentClass <protocolName1,protocolName2 … >
 ```
 
 Obj-C中有很多定义好的协议供我们使用，比如NSCopying，还有Game Center。如果我们想定义一个自己的协议，格式也很简单：
 
 ```
-<pre class="lang:objc decode:true " title="声明协议">@protocol protocolName
+@protocol protocolName
 //必须实现的函数声明
 @optional
 //可选实现的函数声明

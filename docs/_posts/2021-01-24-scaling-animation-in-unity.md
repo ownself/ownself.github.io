@@ -47,9 +47,9 @@ tags:
 
 之后再查阅Unity的官方文档，可以了解到Unity之所以存在Non-uniform缩放显示不正确的问题是因为Unity计算缩放的方式同Maya等大多数DCC工具不一样，特别是不支持”Segment scale compensation”（以下简称SSC）：[《Importing objects from Autodesk® Maya》](https://docs.unity3d.com/Manual/HOWTO-ImportObjectsFrom3DApps.html#Maya)
 
-> Unity does not support Autodesk® Maya®’s Rotate Axis (pre-rotation). 
-> Joint limitations include: 
->  • Joint Orient (joint only post-rotation) 
+> Unity does not support Autodesk® Maya®’s Rotate Axis (pre-rotation).   
+> Joint limitations include:   
+>  • Joint Orient (joint only post-rotation)   
 >  • **Segment Scale Compensate (joint only option)**
 
 这个SSC是Maya独有的一个动画功能，在使用Maya制作动画资源时默认会在每一个骨骼节点开启，其效果是自动针对骨骼父节点的缩放信息来对子结点进行缩放补偿，使得子节点不会受到父节点的缩放变化影响。
@@ -66,9 +66,9 @@ tags:
 
 查看FBX SDK的官方文档：[Class FbxNode](https://help.autodesk.com/view/FBX/2017/ENU/?guid=__cpp_ref_class_fbx_node_html) 该字段是用来描述子节点是否受父节点的变换影响的。
 
-> These settings determine how transformations must be applied when evaluating a node’s transformation matrix. The possible values are: 
->  • eInheritRrSs : Scaling of parent is applied in the child world after the local child rotation. 
->  • eInheritRSrs : Scaling of parent is applied in the parent world. 
+> These settings determine how transformations must be applied when evaluating a node’s transformation matrix. The possible values are:   
+>  • eInheritRrSs : Scaling of parent is applied in the child world after the local child rotation.   
+>  • eInheritRSrs : Scaling of parent is applied in the parent world.   
 >  • **eInheritRrs : Scaling of parent does not affect the scaling of children**.
 
 由此我们可以确认对于SSC功能FBX文件格式本身是支持的，这个信息不会因为将动画资源以FBX格式导出而丢失。

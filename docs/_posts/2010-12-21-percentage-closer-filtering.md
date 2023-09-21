@@ -25,7 +25,7 @@ PCF通过在绘制阴影时，除了绘制该点阴影信息之外还对该点�
 样本值是预先固定好的，最大可进行16次采样（需要compile ps\_3\_0编译方式）
 
 ```
-<pre class="lang:default decode:true " title="泊松分布">float2 poissonDisk[16] = {
+float2 poissonDisk[16] = {
 	float2(-0.94201624, -0.39906216),
 	float2(0.94558609, -0.76890725),
 	float2(-0.094184101, -0.92938870),
@@ -48,7 +48,7 @@ PCF通过在绘制阴影时，除了绘制该点阴影信息之外还对该点�
 ### 采样函数
 
 ```
-<pre class="lang:default decode:true " title="采样">// zReceiver为深度信息
+// zReceiver为深度信息
 float PCF_Filter(float2 uv, float zReceiver, float filterRadiusUV)
 {
 	float sum = 0.0f;
@@ -69,13 +69,13 @@ float PCF_Filter(float2 uv, float zReceiver, float filterRadiusUV)
 剩下的很简单了，在上篇介绍Shadow Map的文章中将采样的代码：
 
 ```
-<pre class="lang:default decode:true ">LightAmount = (tex2D(g_samShadow, ShadowTexC) < vPosLight.z / vPosLight.w) ? 0.0f : 1.0f;
+LightAmount = (tex2D(g_samShadow, ShadowTexC) < vPosLight.z / vPosLight.w) ? 0.0f : 1.0f;
 ```
 
 替换为：
 
 ```
-<pre class="lang:default decode:true ">LightAmount = PCF_Filter(ShadowTexC, vPosLight.z / vPosLight.w, 1.0f);
+LightAmount = PCF_Filter(ShadowTexC, vPosLight.z / vPosLight.w, 1.0f);
 ```
 
 即可了，实现后的效果：
