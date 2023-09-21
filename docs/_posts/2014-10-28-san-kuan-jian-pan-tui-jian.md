@@ -16,7 +16,7 @@ categories:
 
 ### Microsoft Natural Ergonomic Keyboard 4000
 
-<figure aria-describedby="caption-attachment-1335" class="wp-caption aligncenter" id="attachment_1335" style="width: 786px">[![微软人体工程学4000](http://www.ownself.org/blog/wp-content/uploads/2014/10/NaturalErgonomic4000.png)](http://www.ownself.org/blog/wp-content/uploads/2014/10/NaturalErgonomic4000.png)<figcaption class="wp-caption-text" id="caption-attachment-1335">微软人体工程学4000</figcaption></figure>
+<figure aria-describedby="caption-attachment-1335" class="wp-caption aligncenter" id="attachment_1335" style="width: 786px">[![微软人体工程学4000](/wp-content/uploads/2014/10/NaturalErgonomic4000.png)](/wp-content/uploads/2014/10/NaturalErgonomic4000.png)<figcaption class="wp-caption-text" id="caption-attachment-1335">微软人体工程学4000</figcaption></figure>
 
 好吧，这个键盘有着一大堆可定义多功能键，来自微软硬件，我不喜欢Windows，但是却一直很喜欢微软硬件团队设计的键盘和鼠标，CS时代我一直都在使用IE3.0，用坏了一个还又买了一个，微软硬件最大的特点就是人体工程学，这款键盘正是如此，分离的字母区标示着这是一款以文字为主需求而设计的键盘，中部的凸起配合可拆卸的底座形成一个下陷的字母键区域，再加上标志性的华丽真皮掌托，可以保证你的手腕能以最小的负担进行长时间的键盘工作。这款键盘面积算是比较大的了，摆在桌上也很霸气。另外价格非常合适，现在只要￥300不到的样子，而且完美支持Mac OSX。
 
@@ -24,7 +24,7 @@ categories:
 
 ### Mechanical keyboard with blue switches
 
-<figure aria-describedby="caption-attachment-1336" class="wp-caption aligncenter" id="attachment_1336" style="width: 787px">[![Filco NINJA 87 ML](http://www.ownself.org/blog/wp-content/uploads/2014/10/MechanicalKeyboard.png)](http://www.ownself.org/blog/wp-content/uploads/2014/10/MechanicalKeyboard.png)<figcaption class="wp-caption-text" id="caption-attachment-1336">Filco NINJA 87 ML</figcaption></figure>
+<figure aria-describedby="caption-attachment-1336" class="wp-caption aligncenter" id="attachment_1336" style="width: 787px">[![Filco NINJA 87 ML](/wp-content/uploads/2014/10/MechanicalKeyboard.png)](/wp-content/uploads/2014/10/MechanicalKeyboard.png)<figcaption class="wp-caption-text" id="caption-attachment-1336">Filco NINJA 87 ML</figcaption></figure>
 
 好吧，准确的讲这不是一款键盘，而是一类键盘，就是青轴的机械键盘，机械键盘很早就有了，但是似乎最近几年才开始火爆起来，数不清的厂商在推出各种各样的机械键盘，价格也是从￥300、400到￥1000往上参差不齐，不过鉴于大多数机械键盘都是使用Cherry的轴所以手感上我相信并不会真的差距那么大，当然大厂肯定在细节上会更用心一些，比如可调节的背光，更好材质的键帽或者原生支持Mac OSX。我目前使用的是一款青轴的Noppoo Choc 87，只要￥400不到的样子，当然条件允许的情况下我相信Cherry、Filco、KBT是更好的选择。
 
@@ -32,7 +32,7 @@ categories:
 
 ### Happy Hacking Keyboard Pro 2 (Type-S)
 
-<figure aria-describedby="caption-attachment-1337" class="wp-caption aligncenter" id="attachment_1337" style="width: 915px">[![HHKB Pro2 Type-S](http://www.ownself.org/blog/wp-content/uploads/2014/10/HHKBPro2.png)](http://www.ownself.org/blog/wp-content/uploads/2014/10/HHKBPro2.png)<figcaption class="wp-caption-text" id="caption-attachment-1337">HHKB Pro2 Type-S</figcaption></figure>
+<figure aria-describedby="caption-attachment-1337" class="wp-caption aligncenter" id="attachment_1337" style="width: 915px">[![HHKB Pro2 Type-S](/wp-content/uploads/2014/10/HHKBPro2.png)](/wp-content/uploads/2014/10/HHKBPro2.png)<figcaption class="wp-caption-text" id="caption-attachment-1337">HHKB Pro2 Type-S</figcaption></figure>
 
 来自日本的HHKB，高端、小众，只为程序员而生，工程师的装逼神器，以及高达￥2000块的售价，其实这款键盘都够单独吹一篇了，因为特点确实过于鲜明了。首先这是一款电容键盘，号称是手感寿命最长的键盘。它原生支持Linux/Mac OSX，顺道也支持Windows，只有60个键，Control键位于通常Caps Lock键的位置，没有方向键，这些设计明显都是倾向于程序员使用，而且还得是喜爱使用Vim或者Emacs的程序员。它很轻，USB线可拆卸，非常便于携带。你有Pro2标准版和Type-S两种款式可以选择，两款的手感据说很不一样，标准版手感据说比较脆比较硬；Type-S的S代表静音，手感很轻很软，声音噗噗的，我的感觉是更接近薄膜键盘一些，虽然没有青轴机械键盘敲打起来那么潇洒，但敲上一天确实不累，心里也不至于那么烦躁……价格上标准版要便宜￥500多，但两款无论那款确实都很难配得上性价比这三个字的，它最吸引我也是我最无法割舍的地方也就是它的布局了，很可惜众多机械键盘厂商竟然没有一个愿意山寨下它的布局的。另外这个键盘是可以选择无刻字版本的，让你的逼格瞬间爆表，对！没错！热爱装逼的我，选的正是无刻字版本。
 

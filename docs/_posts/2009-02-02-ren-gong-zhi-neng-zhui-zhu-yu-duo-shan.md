@@ -25,7 +25,7 @@ else if (A.y < B.y)
 	A.y++;
 ```
 
-![](http://www.ownself.org/blog/wp-content/uploads/2009/02/1.jpg)
+![](/wp-content/uploads/2009/02/1.jpg)
 
 这个方法虽然简明易懂但是在实际使用的时候会出现如上图所显现的并不太自然的运动轨迹。
 
@@ -37,7 +37,7 @@ Normalize(&u); // 向量u单位化
 A += u * A.speedvalue;
 ```
 
-![](http://www.ownself.org/blog/wp-content/uploads/2009/02/2.jpg)
+![](/wp-content/uploads/2009/02/2.jpg)
 
 3.拦截：比较高级的追逐模式，如果能做成想人一样的拦截判断，是需要考虑很多种情况的，比如根据目标移动方向选择距离该方向最近点到达后迎面拦截；或者再结合目标速度进行进一步判断选择更合适的拦截点；甚至通过判断目标以往运动规律来预测下一步运动的情况，细想想人脑还真挺吓人，这么多的事情毫不费力就能给出模糊结论和大致判断。
 
@@ -59,7 +59,7 @@ a.speed = u;//追逐者速度向量上的更新
 a.position += a.speed;
 ```
 
-![](http://www.ownself.org/blog/wp-content/uploads/2009/02/3.jpg)
+![](/wp-content/uploads/2009/02/3.jpg)
 
 这个算法在程序中需要每帧执行，也就是说即使目标进行随机运动，追逐者也会审时度势的调整方向，继续追踪，为了加深理解，写了程序来测试这段算法，[点击下载](http://cid-507861a5ffb49bea.skydrive.live.com/self.aspx/.Public/%e7%a8%8b%e5%ba%8f%e4%bb%a3%e7%a0%81/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e7%bb%83%e4%b9%a0%7C_%e6%8b%a6%e6%88%aa.rar)，不过经过测试发现这个算法还是有一定局限性，由于算法是一个趋向性的过程，通常情况下，会在起步一段后便能固定下追逐的方向，但是当追逐者原本的方向与目标的方向相似到一定程度时，也就是说速度向量的模小到一定程度的时候，追逐点会呈现出越来越远的趋势，而这是并不合理的。  
 PS:测试程序要想编译通过的话需要DirectX SDK，呵呵，我实在不擅长用MFC写GUI程序。

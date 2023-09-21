@@ -74,11 +74,11 @@ PublicSystemLibraryPaths.Add("/Applications/Xcode.app/Contents/Developer/Toolcha
 
 1\. 修改/Engine/Source/Programs/UnrealBuildTool/ProjectFiles/Xcode/XcodeProject.cs中AppendPlatformConfiguration函数：
 
-![](http://www.ownself.org/blog/wp-content/uploads/2020/11/xcodeproject.png)
+![](/wp-content/uploads/2020/11/xcodeproject.png)
 
 2\. 修改/Engine/Source/Programs/UnrealBuildTool/Platform/IOS/IOSToolChain.cs中GetLinkArguments\_Global函数：
 
-![](http://www.ownself.org/blog/wp-content/uploads/2020/11/iostoolchain.png)
+![](/wp-content/uploads/2020/11/iostoolchain.png)
 
 # 总结
 

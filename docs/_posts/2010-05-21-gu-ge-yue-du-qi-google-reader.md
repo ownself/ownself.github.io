@@ -10,7 +10,7 @@ categories:
     - IT
 ---
 
-[![google_reader](http://www.ownself.org/blog/wp-content/uploads/2010/GoogleReader_749/google_reader_thumb.png "google_reader")](http://www.ownself.org/blog/wp-content/uploads/2010/GoogleReader_749/google_reader.png) 我是谷歌服务的重度粉丝，而Google Reader（简称GR）又是其中我非常非常喜爱的服务之一。   
+[![google_reader](/wp-content/uploads/2010/GoogleReader_749/google_reader_thumb.png "google_reader")](/wp-content/uploads/2010/GoogleReader_749/google_reader.png) 我是谷歌服务的重度粉丝，而Google Reader（简称GR）又是其中我非常非常喜爱的服务之一。   
  作为一款在线RSS阅读器，GR有着高效，快速，干净，界面友好等诸多优点，无论你是一位每天工作都离不开电脑的白领，还是希望提高网络阅读效率的学生，GR都是不二选择。另外GR中独特的趋势分析以及Web2.0特性的好友分享功能，都在并未增加繁琐的前提下增大了阅读的乐趣。我相信电子阅读一定会完全代替传统的纸质阅读，而GR就是这个历史过程中的一种尝试。   
  GR我已经使用了整整一年的时间了，现在已成为我在网上获取新闻以及趣事的最重要的工具，好东西我总是希望能够有更多的朋友使用的，所以一直以来我也在努力的推荐给我的那些非计算机系的朋友们，不过目前来看身边主要的使用群体还是我等IT宅男们啊……呵呵。   
  GR的主要功能便是用于阅读用户订阅的RSS条目，所谓RSS（聚合内容，Really Simple Syndication）条目是指新闻、博客等各种网站提供的内容输出，用户通过RSS阅读器如GR和RSS条目便可实现网站更新内容的收取，可以同时即时获得多个网站的更新内容而不必一一登录，对于网上冲浪，无疑是非常高效的。   

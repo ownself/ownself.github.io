@@ -13,4 +13,4 @@ categories:
 ---
 
 这个截图留下来~~~纪念~~  
-[![love](http://www.ownself.org/blog/wp-content/uploads/2012/04/love_thumb.jpg "love")](http://www.ownself.org/blog/wp-content/uploads/2012/04/love.jpg)
+[![love](/wp-content/uploads/2012/04/love_thumb.jpg "love")](/wp-content/uploads/2012/04/love.jpg)

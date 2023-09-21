@@ -37,7 +37,7 @@ Unity中合批性能最好的GPU Instancing的要求之一是使用相同的模�
 
 这里需要特别注意的是SpriteRenderer中生成的Mesh和Unity内建的Quad的Mesh虽然都是两个三角形，但是顶点和索引的顺序确实完全不同的，这个暗坑耽误了我不少的时间。 
 
-![](http://www.ownself.org/blog/wp-content/uploads/2022/03/UnitySpriteGPUInstancing.png)
+![](/wp-content/uploads/2022/03/UnitySpriteGPUInstancing.png)
 
 计算尺寸和偏差的逻辑代码：
 
@@ -166,4 +166,4 @@ meshRenderer.lightProbeUsage = LightProbeUsage.CustomProvided;
 
 项目中的资源不好公开出来，所以我将核心思路实现在了一个简单的[示例工程](https://github.com/ownself/UnitySpriteGPUInstancing)中，有需要的话，请自行参考，如果有发现问题或者更好的改进方案，也请不吝赐教。
 
-![](http://www.ownself.org/blog/wp-content/uploads/2022/03/SpriteInstancingResult.png)
+![](/wp-content/uploads/2022/03/SpriteInstancingResult.png)

@@ -15,6 +15,6 @@ categories:
  费了一大圈劲儿，恢复成最初的只有Windows系统了，想了想，还是用wubi在Windows系统里安装吧，省事～比较适合我这种装着玩的主儿，把[wubi安装程序](http://www.ubuntu.org.cn/desktop/get-ubuntu/windows-installer/)和[下载好的ISO](http://www.ubuntu.org.cn/desktop/get-ubuntu/download/)文件放在一个目录下启动就能安装，和以前一样简单直观，可以参看[以前的介绍](http://www.ownself.org/ownselfblog/read.php?37)。   
  5分钟就装好了，进了系统才发现，短短的两年时间，Ubuntu真的进化了好多，基本上系统装好一切就都是好的了，甚至不用折腾显卡驱动了，速度也有明显提升了，软件中心友好了很多，软件源的速度也很快，花了不到半个小时就把我以前需要折腾整夜的东西都装齐了。
 
-[![Ubuntu104](http://www.ownself.org/blog/wp-content/uploads/2010/Ubuntu10.04_14DF7/Ubuntu104_thumb.jpg "Ubuntu104")](http://www.ownself.org/blog/wp-content/uploads/2010/Ubuntu10.04_14DF7/Ubuntu104.jpg)   
+[![Ubuntu104](/wp-content/uploads/2010/Ubuntu10.04_14DF7/Ubuntu104_thumb.jpg "Ubuntu104")](/wp-content/uploads/2010/Ubuntu10.04_14DF7/Ubuntu104.jpg)   
  Ubuntu真的成熟了很多，对于我这种伪Linux用户来说，这绝对是一个非常实用而且美丽异常的操作系统了～毫无保留，再次强烈推荐大家！！   
  PS：<http://forum.ubuntu.org.cn/>

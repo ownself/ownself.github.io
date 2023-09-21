@@ -12,7 +12,7 @@ categories:
 
 <font face="微软雅黑" size="2"> </font>
 
-[![liu](http://www.ownself.org/blog/wp-content/uploads/2010/04/shadowmap_thumb.jpg "liu")](http://www.ownself.org/blog/wp-content/uploads/2010/04/shadowmap.jpg) 如何能够高效的产生更接近真实的阴影一直是视频游戏的一个很有挑战的工作，本文介绍目前所为人熟知的两种阴影技术之一的ShadowMap（阴影图）技术。   
+[![liu](/wp-content/uploads/2010/04/shadowmap_thumb.jpg "liu")](/wp-content/uploads/2010/04/shadowmap.jpg) 如何能够高效的产生更接近真实的阴影一直是视频游戏的一个很有挑战的工作，本文介绍目前所为人熟知的两种阴影技术之一的ShadowMap（阴影图）技术。   
  ShadowMap技术的概念应该说是最早应用在视频游戏中的阴影实现技术，有着非常高效和快速的特点，在实现阴影的同时只需要相对很小的计算负担。   
  ShadowMap绘制阴影主要是通过一张额外的阴影贴图来实现的，在早期的3D游戏中人物等动态运动的物体通常不绘制阴影，而场景内遮蔽关系相对确定的静态物体的阴影通常是在建立模型之初便已绘制到场景的贴图之中，这是利用ShadowMap来实现阴影概念的最初形成，而现在我们说到的 ShadowMap只是在游戏绘制时将阴影动态的绘制到一张阴影贴图上，再利用计算好的阴影贴图来绘制场景而已，整个计算只需要将场景绘制两边，而不需要像ShadowVolume一样额外生成新的模型，所以Shadow可以保持很好的性能表现而与场景的复杂度并无太大关系。   
  ShadowMap的概念很好理解，整个绘制过程分为两个阶段，首先以灯光为视角对场景进行绘制，绘制的结果是将场景内物体相对光源的深度信息写入一张阴影图中（Shadow Map），而不是RGB颜色。第二遍绘制场景时逐像素对比相对光源的深度值与阴影图中的深度，当深度大于阴影图中的深度时，说明该像素位于阴影中，进行相应的阴影混合。因为ShadowMap这种技术的特点，所以非常适合实现锥光源（spot light）下的阴影。对于在点光源（point light）下的利用ShadowMap生成阴影，有一种方法是利用Cubemap，这样六张阴影图可以实现全景点光源的ShadowMap。   

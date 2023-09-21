@@ -10,7 +10,7 @@ categories:
     - 历程
 ---
 
-![MyBaby](http://www.ownself.org/blog/wp-content/uploads/2014/01/MyBaby-298x300.png)
+![MyBaby](/wp-content/uploads/2014/01/MyBaby-298x300.png)
 
 人生是场不长不短的旅程，而我的这场旅程，在三十岁而立之时的这一年里，迎来奇妙的一站。
 

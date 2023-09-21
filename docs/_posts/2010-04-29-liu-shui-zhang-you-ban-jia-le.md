@@ -10,7 +10,7 @@ categories:
     - 流水帐
 ---
 
-[![懒猫一条](http://www.ownself.org/blog/wp-content/uploads/2010/ed902597b2fb_A88D/youbanjiale_thumb.jpg "懒猫一条")](http://www.ownself.org/blog/wp-content/uploads/2010/ed902597b2fb_A88D/youbanjiale.jpg)
+[![懒猫一条](/wp-content/uploads/2010/ed902597b2fb_A88D/youbanjiale_thumb.jpg "懒猫一条")](/wp-content/uploads/2010/ed902597b2fb_A88D/youbanjiale.jpg)
 
 \* 上一个房子住了整整8个月，但总感觉时间似乎没那么长的样子，我的房东是个地道的职业房东，手里有不少套房子，每天的工作就是奔波于各个房客之间靠收租过活，事实证明租房子尽量不要找这样的房东，尤其是在上海，他们孜孜不倦的折腾精神和一毛不拔反而总想占些便宜的大无畏精神令人折服，好吧，我又以点盖面了，也许我只是遇到了个极品……   
 \* 搬家的那天非常狼狈，辛苦郭川了，下着雨，郭川骑着三轮儿，我站在后面扶着东西打着伞，丫还单手扶把打着手机，路上所有车辆行人看我们二百五的架势一律主动闪避，哈哈，这场景是忘不了了。   

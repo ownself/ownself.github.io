@@ -12,7 +12,7 @@ categories:
 
 Leap Motion是目前非常时髦的外设，为体感操作带来了新的尝试和思考，而且非常小巧，设计上也是浑然一体，有着强烈的Mac风格，不过和Kinect不同的是，Leap Motion将注意力放在了手势操作上，希望将用户的操作精确到指尖。
 
-[![leapmotion](http://www.ownself.org/blog/wp-content/uploads/2013/08/leapmotion.jpg)](http://www.ownself.org/blog/wp-content/uploads/2013/08/leapmotion.jpg)
+[![leapmotion](/wp-content/uploads/2013/08/leapmotion.jpg)](/wp-content/uploads/2013/08/leapmotion.jpg)
 
 我们时髦的教授方臻同学这一次走在了时代的前列腺上，第一时间居然入手了一个！正好我们一起在研究小游戏，就拿来看看是不是很容易就能让我们的游戏支持Leap Motion。
 

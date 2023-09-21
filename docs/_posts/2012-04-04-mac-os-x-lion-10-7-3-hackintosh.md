@@ -12,7 +12,7 @@ categories:
     - IT
 ---
 
-![MacOSXLion](http://www.ownself.org/blog/wp-content/uploads/2012/04/MacOSXLion_thumb.jpg "MacOSXLion")
+![MacOSXLion](/wp-content/uploads/2012/04/MacOSXLion_thumb.jpg "MacOSXLion")
 
 上次为大家介绍过了我在我的PC上安装黑苹果的方法，安装的是雪豹10.6.4，最近又安装了Lion 10.7.3，在这里也把我安装的方法做一个简单的说明，希望能帮助到需要的朋友们，这里假设您已经拥有一些黑苹果的知识并阅读过我的前文，[入口在这里](http://www.ownself.org/blog/2010/wo-de-Mac-OS-X86.html)。
 

@@ -14,7 +14,7 @@ categories:
 
 我在过去第一次参与Unreal项目的开发时接触到了这种同步模型，并对其原理进行了学习和了解，但内部的机制Unreal其实全部都帮你已经实现好了，俗话说的好——纸上得来终觉浅，绝知此事要宫刑！哦，不，是要躬行……所以最好的学习办法还是动手写一下。
 
-![Demo screenshot](http://www.ownself.org/blog/wp-content/uploads/2020/02/NetworkingReplication.gif)
+![Demo screenshot](/wp-content/uploads/2020/02/NetworkingReplication.gif)
 
 关于状态同步的模型有一个英文的系列文章很好的阐述了其原理及克服一些问题的方法，再动手写示例之前最好再复习一下其原理：[client server game architecture](https://www.gabrielgambetta.com/client-server-game-architecture.html)
 

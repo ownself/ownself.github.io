@@ -18,17 +18,17 @@ TestFlight曾经作为iOS应用开发非常受欢迎的工具之一，帮助开�
 
 如果你想使用新的TestFlight，首先你需要到iTunesConnect.apple.com上使用你的iTunesConnect帐号（Admin权限）来为你的应用创建一个App Record，以前我们只有当应用准备提交Apple上AppStore的时候才会需要创建App Record。需要注意的是如果你的开发者帐号是以公司形式注册的话，那么第一次创建应用程序记录时，系统会要求你填写公司未来在AppStore上的显示名称，这个名称是一经决定无法修改的，请填写前三思。创建App Record需要填写的内容中Name需要唯一并不能与已经在AppStore中发布的App名字重名；Bundle ID需要和Xcode中的相同；SKU也是一个唯一标识，我们使用的就是Bundle ID作为SKU。
 
-![apprecord](http://www.ownself.org/blog/wp-content/uploads/2015/08/apprecord.png)
+![apprecord](/wp-content/uploads/2015/08/apprecord.png)
 
 ### Upload Build
 
 当应用程序记录创建好后，我们就可以上传用以TestFlight的版本了，这个版本需要以公司的Distribution的Certificate加Provisioning profile编的Adhoc Release版，虽然在iTunesConnect后台看到是可以使用Application Loader上传的，但是似乎还是使用Xcode来上传更方便一些：设置好Provisioning profile和Code signing后，直接Archive，Archive好后在Organizer里就可以直接上传。
 
-[![上传版本](http://www.ownself.org/blog/wp-content/uploads/2015/08/submitapp.png)](http://www.ownself.org/blog/wp-content/uploads/2015/08/submitapp.png)
+[![上传版本](/wp-content/uploads/2015/08/submitapp.png)](/wp-content/uploads/2015/08/submitapp.png)
 
 要注意的是如果你希望收集测试人员所遇到的Crash的Log的话需要勾选上Include app symbols。另外打包的版本要注意记得更新小版本号，否则最后上传时会提醒版本号重复的错误，而大版本号在Beta测试阶段则最好不要轻易改变，因为如果改变大版本号需要重新进行Beta App Review，谁也不希望平白多等几天。另外要留意Apple限制每天我们只能上传2个版本。
 
-[![includesymbol](http://www.ownself.org/blog/wp-content/uploads/2015/08/includingsymbol.png)](http://www.ownself.org/blog/wp-content/uploads/2015/08/includingsymbol.png)
+[![includesymbol](/wp-content/uploads/2015/08/includingsymbol.png)](/wp-content/uploads/2015/08/includingsymbol.png)
 
 ### Metadata
 

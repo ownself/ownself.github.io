@@ -16,7 +16,7 @@ Percentage Closer Filtering简称PCF是常用于柔化Shadow Map边缘，产生�
 
 PCF通过在绘制阴影时，除了绘制该点阴影信息之外还对该点周围阴影情况进行多次采样并混合来实现锯齿的柔化，这也是抗锯齿最通用也是最简易的处理方式，下面是不同采样次数下PCF的表现：
 
-[![PCF](http://www.ownself.org/blog/wp-content/uploads/2010/12/PCF_thumb.jpg "PCF")](http://www.ownself.org/blog/wp-content/uploads/2010/12/PCF.jpg)
+[![PCF](/wp-content/uploads/2010/12/PCF_thumb.jpg "PCF")](/wp-content/uploads/2010/12/PCF.jpg)
 
 原理简单，实现自然也不复杂，有很多种办法，最简单的可以从周围的取若干像素信息然后平均混合；也可以根据一定比例插值；这里讲按照泊松分布来进行采样：
 
@@ -80,4 +80,4 @@ float PCF_Filter(float2 uv, float zReceiver, float filterRadiusUV)
 
 即可了，实现后的效果：
 
-[![PCFShadowmap](http://www.ownself.org/blog/wp-content/uploads/2010/12/PCFShadowmap_thumb.jpg "PCFShadowmap")](http://www.ownself.org/blog/wp-content/uploads/2010/12/PCFShadowmap.jpg)
+[![PCFShadowmap](/wp-content/uploads/2010/12/PCFShadowmap_thumb.jpg "PCFShadowmap")](/wp-content/uploads/2010/12/PCFShadowmap.jpg)

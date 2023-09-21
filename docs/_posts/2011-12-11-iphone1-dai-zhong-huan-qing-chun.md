@@ -18,7 +18,7 @@ categories:
 
 最让我满意的是速度确实很快～
 
-[![iPhone1iOS51](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS51_thumb.jpg "iPhone1iOS51")](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS51.jpg) [![iPhone1iOS53](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS53_thumb.jpg "iPhone1iOS53")](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS53.jpg) [![iPhone1iOS52](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS52_thumb.jpg "iPhone1iOS52")](http://www.ownself.org/blog/wp-content/uploads/2012/04/iPhone1iOS52.jpg)
+[![iPhone1iOS51](/wp-content/uploads/2012/04/iPhone1iOS51_thumb.jpg "iPhone1iOS51")](/wp-content/uploads/2012/04/iPhone1iOS51.jpg) [![iPhone1iOS53](/wp-content/uploads/2012/04/iPhone1iOS53_thumb.jpg "iPhone1iOS53")](/wp-content/uploads/2012/04/iPhone1iOS53.jpg) [![iPhone1iOS52](/wp-content/uploads/2012/04/iPhone1iOS52_thumb.jpg "iPhone1iOS52")](/wp-content/uploads/2012/04/iPhone1iOS52.jpg)
 
 既然系统换了新的了，顺便就研究了下Push功能的问题，因为是有锁机所以刷过系统后Push功能就失效了，原因是有个Push证书必须要通过iTunes从苹果那里获得的，上网一搜发现，嘿！赶巧了，也是最近出了解决方法的：有人用自己的无锁机器一遍一遍的重刷系统，生成有效的证书，导出来再重刷，然后放到淘宝上卖……然后我5块钱买了一个，放到机器里，就好了……
 

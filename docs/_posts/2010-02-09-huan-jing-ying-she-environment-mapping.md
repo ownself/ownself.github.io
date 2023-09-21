@@ -12,7 +12,7 @@ categories:
 
  环境映射是一种用来模拟光滑表面对周围环境的反射的技术，常见的如镜子、光亮漆面的金属等等。   
  这种技术的实现主要通过将一张带有周围环境的贴图附在所需要表现的多边形表面来实现的。目前在实时3D游戏画面渲染中经常使用的有两种环境映射。   
-[![Spherical](http://www.ownself.org/blog/wp-content/uploads/2010/02/Spherical_thumb.jpg "Spherical")](http://www.ownself.org/blog/wp-content/uploads/2010/02/Spherical.jpg) **球形环境映射（Spherical Environment Mapping）**  球形环境映射是模拟在球体表面产生环境映射的技术，通过对普通贴图的UV坐标进行调整计算来产生在球体表面应产生的扭曲。   
+[![Spherical](/wp-content/uploads/2010/02/Spherical_thumb.jpg "Spherical")](/wp-content/uploads/2010/02/Spherical.jpg) **球形环境映射（Spherical Environment Mapping）**  球形环境映射是模拟在球体表面产生环境映射的技术，通过对普通贴图的UV坐标进行调整计算来产生在球体表面应产生的扭曲。   
  UV的计算利用球体表面的法线来计算。计算公式如下：   
  u=Nx/2+0.5   
  v=Ny/2+0.5   
@@ -85,4 +85,4 @@ categories:
  MinFilter = LINEAR;   
  MagFilter = LINEAR;   
  };   
-[![Cubemap](http://www.ownself.org/blog/wp-content/uploads/2010/02/Cubemap_thumb.jpg "Cubemap")](http://www.ownself.org/blog/wp-content/uploads/2010/02/Cubemap.jpg)
+[![Cubemap](/wp-content/uploads/2010/02/Cubemap_thumb.jpg "Cubemap")](/wp-content/uploads/2010/02/Cubemap.jpg)

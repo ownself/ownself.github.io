@@ -10,7 +10,7 @@ categories:
     - 历程
 ---
 
-[![firsttask](http://www.ownself.org/blog/wp-content/uploads/2009/0fb8b88d56ec_1145B/firsttask_thumb.jpg "firsttask")](http://www.ownself.org/blog/wp-content/uploads/2009/0fb8b88d56ec_1145B/firsttask.jpg) 俗话说得好，万事开头难，我深信这一点，所以每当我身处一个新环境的时候，我都会不由得紧张起来，因为我总是希望能把这个“头”开好。   
+[![firsttask](/wp-content/uploads/2009/0fb8b88d56ec_1145B/firsttask_thumb.jpg "firsttask")](/wp-content/uploads/2009/0fb8b88d56ec_1145B/firsttask.jpg) 俗话说得好，万事开头难，我深信这一点，所以每当我身处一个新环境的时候，我都会不由得紧张起来，因为我总是希望能把这个“头”开好。   
  上周，我终于把我来到2K Games的第一个任务给解决掉了，因为无法判别问题所在、每次测试必须要经过3个小时的SONY官方服务器的转换以及debug只能依靠printf而导致的低效率，前后历时竟然将近两个月，这个中间几度让我感到很沮丧的任务，我终于完成了！   
  至少对我这个菜鸟来说，还是蛮不容易的，呵呵，虽然不理想，但至少能给自己这个“第一个任务”打个勉强及格了。   
  想到这里，让我想起了以往的“第一个任务”，呵呵～   

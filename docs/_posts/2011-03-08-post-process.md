@@ -18,7 +18,7 @@ categories:
  **Blur**   
  模糊是很常见的一种后期效果，实现的方式也很简单，通过对像素点周围点多次采样混合即可得到理想的模糊效果，通过采样的半径及次数来控制模糊的程度。不过在游戏中出于性能考虑，一般将模糊的过程分为两次，一次横向像素上的模糊，一次纵向像素上的模糊，两次叠加，并且一般的做法会在进行模糊之前先将Render Target缩小四倍，模糊过后再将Render Target恢复屏幕大小可以在效率上节省很多而且同样可以产生质量很高的模糊效果。
 
-[![blur](http://www.ownself.org/blog/wp-content/uploads/2011/03/blur_thumb.jpg "blur")](http://www.ownself.org/blog/wp-content/uploads/2011/03/blur.jpg) float2 PixelKernel\[g\_cKernelSize\] =   
+[![blur](/wp-content/uploads/2011/03/blur_thumb.jpg "blur")](/wp-content/uploads/2011/03/blur.jpg) float2 PixelKernel\[g\_cKernelSize\] =   
  {   
  { 0, -6 },   
  { 0, -5 },   
@@ -64,7 +64,7 @@ categories:
 
  **Normal based Edge Detect**  基于法线的边缘检测，利用边缘相交两面法线夹角越大，面法线向量点积越小的原理来检测边缘。需要先生成一张各点像素法线信息的法线图，要注意法线需要规格化，再根据对周围像素点法线采样判断与像素法线之间的关系来绘制边缘图。
 
-[![edgedetect](http://www.ownself.org/blog/wp-content/uploads/2011/03/edgedetect_thumb.jpg "edgedetect")](http://www.ownself.org/blog/wp-content/uploads/2011/03/edgedetect.jpg) float2 PixelKernel\[4\] =   
+[![edgedetect](/wp-content/uploads/2011/03/edgedetect_thumb.jpg "edgedetect")](/wp-content/uploads/2011/03/edgedetect.jpg) float2 PixelKernel\[4\] =   
  {   
  { 0, 1},   
  { 1, 0},   
@@ -86,7 +86,7 @@ categories:
  Bright Pass Filter：这一步的作用是将场景内低于一定亮度的像素也就是场景内较暗的区域隐去（涂黑），只留出场景内高亮的区域，用于下一步计算   
  Blur：利用上一步得到的场景进行前面所说的模糊并进行一定程度的加亮，以此得到我们想要的光亮处所形成的光晕效果   
  最后将算好的Render Target和原始的场景相加即可得到所要的效果。   
-[![bloom](http://www.ownself.org/blog/wp-content/uploads/2011/03/bloom_thumb.jpg "bloom")](http://www.ownself.org/blog/wp-content/uploads/2011/03/bloom.jpg)   
+[![bloom](/wp-content/uploads/2011/03/bloom_thumb.jpg "bloom")](/wp-content/uploads/2011/03/bloom.jpg)   
  float Luminance = 0.08f;   
  static const float fMiddleGray = 0.18f;   
  static const float fWhiteCutoff = 0.8f;   

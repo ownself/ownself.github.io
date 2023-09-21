@@ -16,7 +16,7 @@ categories:
  实时渲染的游戏画面通常使用经典的Phong光照模型来进行计算，不同的情况下可能计算的公式会有细微调整，但都是利用环境光+漫反射光+镜面反射光的模型来描述光对物体表面的影响。   
 **环境光**   
  环境光主要模拟场景中普遍存在的光源和各个物体反射过来的光线，位于理想的模型中的环境光是均匀的分布在场景的各个角落，均匀的照射在每一个物体表面上。不用考虑光的位置，也不用考虑光的方向。   
-[![lighting1](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting1_thumb.jpg "lighting1")](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting1.jpg)   
+[![lighting1](/wp-content/uploads/2010/02/lighting1_thumb.jpg "lighting1")](/wp-content/uploads/2010/02/lighting1.jpg)   
  Aintensity表示环境光的强度， 表示环境光的颜色， 表示物体对环境光各成分颜色的反射系数。   
 **漫反射**   
  漫反射主要模拟物体表面的漫反射情况，由于漫反射是当物体表面受到光照之后会向所在面方向发散反射，所以与观察角度无关，只同光源角度有关。   
@@ -26,7 +26,7 @@ categories:
  如果将其中的光向量L和法向量N都单位化，则上述公式可以简化为L·N = cosa   
  这样，可以用N和L的点击来描述漫反射光照的强度，再用它乘以光源的漫反射颜色值和材质的漫反射系数得到当前顶点的漫反射颜色值。   
  通常将漫反射光照成分与环境光光照成分相加来综合这些光照，这时顶点的颜色值计算公式为：   
-[![lighting2](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting2_thumb.jpg "lighting2")](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting2.jpg)   
+[![lighting2](/wp-content/uploads/2010/02/lighting2_thumb.jpg "lighting2")](/wp-content/uploads/2010/02/lighting2.jpg)   
  其中，Dintensity和Dcolor分别表示漫反射的强度和颜色， 表示材质的漫反射系数。   
 **镜面反射**   
  环境光不需要考虑光的方向也不需要考虑观察点的方向，漫反射光照模型只考虑光的方向，而在镜面反射光照模型中，既要考虑光的方向，也要考虑观察点的方向。因为对于模拟光滑、有光泽或者磨光的表面，将观察点纳入考虑是很有必要的。   
@@ -36,9 +36,9 @@ categories:
  在程序中将向量R和V都单位化后，就可以用R·V来代替cosb。因此，镜面反射光照可以描述为(R·V)的n次方。   
  反射向量则通过这个公式来计算：R=2\*(N·L)\*N-L   
  具体的推导可以参看下图：N·L为cosa，因为N与L向量的模均为1，所以在N向量方向上的与L在y坐标上相同的向量即为N\*cosa，乘以2放大两倍，平移得最左侧虚线垂直向量，将L向量平移至第三象限，相减，即可得向量R。   
-[![Reflect](http://www.ownself.org/blog/wp-content/uploads/2010/02/Reflect_thumb.jpg "Reflect")](http://www.ownself.org/blog/wp-content/uploads/2010/02/Reflect.jpg)   
+[![Reflect](/wp-content/uploads/2010/02/Reflect_thumb.jpg "Reflect")](/wp-content/uploads/2010/02/Reflect.jpg)   
  添加了镜面反射光照后的顶点颜色计算公式如下：   
-[![lighting3](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting3_thumb.jpg "lighting3")](http://www.ownself.org/blog/wp-content/uploads/2010/02/lighting3.jpg)   
+[![lighting3](/wp-content/uploads/2010/02/lighting3_thumb.jpg "lighting3")](/wp-content/uploads/2010/02/lighting3.jpg)   
  模型如此，具体的应用可进行相应的调整。   
  关于光源距离远近的光强度衰减问题，如果要完全按照模拟光照衰减非常消耗计算，通常的我们可以按照光源的强度与距离的平方成反比来模拟光强度的衰减。   
 **Shading**   
@@ -50,4 +50,4 @@ categories:
 的效果，面片之间过渡相对自然。   
  Phong Shading：并不首先计算出各个顶点的颜色，而是直接根据面片上像素的位置对顶点的法线进行插值，然后根据插值所得的法线，依次计算面片上每个点的颜色，这样的计算更加精确，即使在面片很少的模型上颜色的表现和过渡也更平稳，当然所需的计算时间也相对要多些。   
  其实后两种Shading方式就是我们常说的逐顶点光照和逐像素光照，只不过那个是从Shader流程上区分并命名的而已，原理则是分别来自这两种不同的Shading方式的。   
-[![shading](http://www.ownself.org/blog/wp-content/uploads/2010/02/shading_thumb.jpg "shading")](http://www.ownself.org/blog/wp-content/uploads/2010/02/shading.jpg)
+[![shading](/wp-content/uploads/2010/02/shading_thumb.jpg "shading")](/wp-content/uploads/2010/02/shading.jpg)

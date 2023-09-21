@@ -20,7 +20,7 @@ cocos2d-x作为一个跨平台的2D游戏引擎，确实是一个相当不错的
 
 ### 分辨率
 
-[![androidresolution](http://www.ownself.org/blog/wp-content/uploads/2012/10/androidresolution_thumb.png "androidresolution")](http://www.ownself.org/blog/wp-content/uploads/2012/10/androidresolution.png) 我们可以明确知道的是iPhone的分辨率是480×320，而Retina的分辨率则是标准的iPhone的2倍—960×640，Android的情况则相当复杂，从800×480、854×480到1280×800，各种机型，各种分辨率。
+[![androidresolution](/wp-content/uploads/2012/10/androidresolution_thumb.png "androidresolution")](/wp-content/uploads/2012/10/androidresolution.png) 我们可以明确知道的是iPhone的分辨率是480×320，而Retina的分辨率则是标准的iPhone的2倍—960×640，Android的情况则相当复杂，从800×480、854×480到1280×800，各种机型，各种分辨率。
 
 在cocos2d-x中，我们需要谨记的是，面对iPhone版本，引擎没有提供一个可以实现统一缩放的接口，而无论是否Retina，在游戏内逻辑的分辨率都是480×320，即使我们打开了Retina模式，游戏代码中对坐标的访问也是一致的，区别是在我们需要为Retina提供一套更高分辨率的资源。而Android版本因为分辨率的不统一，所以引擎是提供了整体缩放的接口。
 
@@ -40,7 +40,7 @@ cocos2d-x作为一个跨平台的2D游戏引擎，确实是一个相当不错的
 
 如果把长和高的比值作为考量的话，那么市面上主流设备的比例从3:2到16:9的比值范围大概是是从1.5到1.778，想让游戏完美的显示在这些机器上，我们的办法是使用安全框也就是上面提到的第三种裁减的办法。
 
-[![safeframe](http://www.ownself.org/blog/wp-content/uploads/2012/10/safeframe_thumb.jpg "safeframe")](http://www.ownself.org/blog/wp-content/uploads/2012/10/safeframe.jpg)
+[![safeframe](/wp-content/uploads/2012/10/safeframe_thumb.jpg "safeframe")](/wp-content/uploads/2012/10/safeframe.jpg)
 
 安全框的概念很好理解，游戏支持的屏幕比例从16:9到3:2（当然你可以支持更大的变化比例），而所有重要的游戏内容当将位于3:2的部分，对于16:9扩展开来的屏幕区域主要用来放背景图或者让地图具有更宽广的视野，上图是我们游戏中的一个简易的UI设计稿，很好理解，另外对于一些应当根据屏幕的不同而变更位置比如需要左右对齐的内容，我们也可以通过一些简单的代码来实现的。
 
