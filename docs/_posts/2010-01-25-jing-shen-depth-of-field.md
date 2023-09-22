@@ -39,13 +39,13 @@ Pass One的任务除了绘制场景之外，最重要的就是计算模糊因子
 格式分别是D3DFMT\_A8R8G8B8和D3DFMT\_G16R16，在顶点着色器中，在计算空间坐标变换之外，需要额外输出一个参数，每个点在视角坐标系下的深度值，这个参数将在后面像素着色器中参与计算。
 
 ```
-struct VS\_INPUT
+struct VS_INPUT
 {
     float4 vPos: POSITION;
     float3 vNorm: NORMAL;
     float2 vTexCoord: TEXCOORD0;
 };
-struct VS\_OUTPUT
+struct VS_OUTPUT
 {
     float4 vPos: POSITION;
     float4 vColor: COLOR0;
@@ -53,9 +53,9 @@ struct VS\_OUTPUT
     float2 vTexCoord: TEXCOORD1;
 };
 /////////////////////////////////////////////
-VS\_OUTPUT scene\_shader\_vs(VS\_INPUT v)
+VS_OUTPUT scene_shader_vs(VS_INPUT v)
 {
-    VS\_OUTPUT o = (VS\_OUTPUT)0;
+    VS_OUTPUT o = (VS_OUTPUT)0;
     float4 vPosWV;
     float3 vNorm;
     float3 vLightDir;
@@ -68,7 +68,7 @@ VS\_OUTPUT scene\_shader\_vs(VS\_INPUT v)
     // 计算漫反射颜色值
     vLightDir = normalize(lightPos – v.vPos);
     vNorm = normalize(v.vNorm);
-    o.vColor = dot(vNorm, vLightDir) \* mtrlDiffuse + mtrlAmbient;
+    o.vColor = dot(vNorm, vLightDir) * mtrlDiffuse + mtrlAmbient;
     // 输出贴图UV坐标
     o.vTexCoord = v.vTexCoord;
     return o;
@@ -78,26 +78,26 @@ VS\_OUTPUT scene\_shader\_vs(VS\_INPUT v)
 在像素着色器中，根据已有的信息和我们推导过的式子来计算模糊因子，在这里模糊因子被参数化至0,1区间，0表示完全锐利，1表示最大模糊。
 
 ```
-struct PS\_INPUT
+struct PS_INPUT
 {
     float4 vColor: COLOR0;
     float fDepth: TEXCOORD0;
     float2 vTexCoord: TEXCOORD1;
 };
-struct PS\_OUTPUT
+struct PS_OUTPUT
 {
     float4 vColor: COLOR0;
     float4 vDoF: COLOR1;
 };
 ///////////////////////////////////////////////////////////////////
-PS\_OUTPUT scene\_shader\_ps(PS\_INPUT v)
+PS_OUTPUT scene_shader_ps(PS_INPUT v)
 {
-    PS\_OUTPUT o = (PS\_OUTPUT)0;
+    PS_OUTPUT o = (PS_OUTPUT)0;
     // 输出颜色
-    o.vColor = v.vColor \* tex2D(TexSampler, v.vTexCoord);
+    o.vColor = v.vColor * tex2D(TexSampler, v.vTexCoord);
     // 根据我们推导出的公式计算模糊因子
-    float pixCoC = abs(Dlens \* focalLen \* (Zfocus – v.fDepth) / (Zfocus \* (v.fDepth – focalLen)));
-    float blur = saturate(pixCoC \* scale / maxCoC);
+    float pixCoC = abs(Dlens * focalLen * (Zfocus – v.fDepth) / (Zfocus * (v.fDepth – focalLen)));
+    float blur = saturate(pixCoC * scale / maxCoC);
     // 将深度和模糊因子都归至0-1区间
     o.vDoF = float4(v.fDepth / sceneRange, blur, 0, 0);
     return o;
@@ -118,12 +118,12 @@ PS\_OUTPUT scene\_shader\_ps(PS\_INPUT v)
 另外还有一个很重要的地方在前面的计算步骤中被忽略了，如果我们按照上面的流程计算，那么最终绘制出的画面会出现一个很严重的失真情况：当前后两个物体一个在焦平面一个远离焦平面，那么在两个物体融合接近交点处的像素在混合模糊时，CoC采样势必会将本处在焦平面的物体上的颜色混合进去（color leaking），所以在最终的计算中，我们还要对采样点的深度进行判断，以确定该点是否最终应该混合进去。
 
 ```
-struct PS\_INPUT
+struct PS_INPUT
 {
     float2 vTexCoord: TEXCOORD;
 };
 //////////////////////////////////////////////////////////
-float4 dof\_filter\_ps(PS\_INPUT v) : COLOR
+float4 dof_filter_ps(PS_INPUT v) : COLOR
 {
     // 采样中心点颜色
     float4 colorSum = tex2D(SceneColorSampler, v.vTexCoord);
@@ -131,19 +131,19 @@ float4 dof\_filter\_ps(PS\_INPUT v) : COLOR
     // 采样中心点深度值和模糊因子
     float2 centerDepthBlur = tex2D(DepthBlurSampler, v.vTexCoord);
     // 根据模糊因子计算CoC
-    float sizeCoC = centerDepthBlur.y \* maxCoC;
+    float sizeCoC = centerDepthBlur.y * maxCoC;
     // 采样
-    for (int i = 0; i < NUM\_DOF\_TAPS; i++)
+    for (int i = 0; i < NUM_DOF_TAPS; i++)
     {
         // 计算采样点坐标，filterTaps为事先保存采样坐标的数组
-        float2 tapCoord = v.vTexCoord + filterTaps\[i\] \* sizeCoC;
+        float2 tapCoord = v.vTexCoord + filterTaps[i] * sizeCoC;
         // 采样颜色及采样点的深度值
         float4 tapColor = tex2D(SceneColorSampler, tapCoord);
         float2 tapDepthBlur = tex2D(DepthBlurSampler, tapCoord);
         // 比较深度值以决定是否加入该点
         float tapContribution=(tapDepthBlur.x > centerDepthBlur.x) ? 1.0f : tapDepthBlur.y;
         // 混合颜色
-        colorSum += tapColor \* tapContribution;
+        colorSum += tapColor * tapContribution;
         totalContribution += tapContribution;
     }
     // 取均值

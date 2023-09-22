@@ -7,26 +7,26 @@ layout: post
 guid: 'http://www.ownself.org/blog/?p=1467'
 permalink: /2017/zi-dong-bu-shu-testflight.html
 categories:
-    - 'Mac&amp;iOS'
+    - 'Mac&iOS'
 ---
 
 之前公司里的项目需要部署版本到TestFlight给合作商时，都是由我来手动编专门的版本，再上传到iTunesConnect，不过随着需求越来越频繁，就迫切需要将这部分的工作交给CI来做了。
 
 ### 打包
 
-相信每一个从事苹果平台的开发者最烦恼的东西都是——”Code Signing &amp; Provisioning”，绝对没有之一，不过幸运的是现在Xcode已经有趋势在努力减轻这部分的苦难。
+相信每一个从事苹果平台的开发者最烦恼的东西都是——”Code Signing & Provisioning”，绝对没有之一，不过幸运的是现在Xcode已经有趋势在努力减轻这部分的苦难。
 
 打包的工作我是通过xcodebuild工具来完成，首先创建archive包，这里需要注意的是DEVELOPMENT\_TEAM参数是Xcode8版本以后才支持的。
 
 ```
-xcodebuild clean archive \
--project "Unity-iPhone.xcodeproj" \
--scheme "Unity-iPhone" \
--archivePath "Unity-iPhone.xcarchive" \
+xcodebuild clean archive
+-project "Unity-iPhone.xcodeproj"
+-scheme "Unity-iPhone"
+-archivePath "Unity-iPhone.xcarchive"
 DEVELOPMENT_TEAM="XXXXXXXXXX"
 ```
 
-这个命令等同于Xcode中的Archive操作，DEVELOPMENT\_TEAM参数需要填写的是developer.apple.com上你们的TeamID，一般是一串10位的大写英文，可以在”Account -&gt; Membership”中查看。有了这个参数，xcodebuild会帮你自动做code signing操作。
+这个命令等同于Xcode中的Archive操作，DEVELOPMENT\_TEAM参数需要填写的是developer.apple.com上你们的TeamID，一般是一串10位的大写英文，可以在”Account ->; Membership”中查看。有了这个参数，xcodebuild会帮你自动做code signing操作。
 
 如果打包的过程是通过CI来完成的话，你可能会遇到权限的问题，这里我是通过security命令来做的，不过我并不是十分确定这么做安全方面是否有很大的问题。
 
@@ -39,9 +39,9 @@ security unlock-keychain -p "password" login.keychain
 之后我们再将archive包打成最终的IPA包。
 
 ```
-xcodebuild -exportArchive \
--archivePath "Unity-iPhone.xcarchive" \
--exportOptionsPlist "appstore.plist" \
+xcodebuild -exportArchive
+-archivePath "Unity-iPhone.xcarchive"
+-exportOptionsPlist "appstore.plist"
 -exportPath "xxx/xxx/"
 ```
 
@@ -71,5 +71,5 @@ teamID同前，而method则决定这个IPA的类型，这里因为我们是TestF
 ```
 TFUSER=$(<usr.dat)
 TFPASW=$(<pw.dat)
-/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "Unity-iPhone.ipa" -u "${TFUSER}" -p "${TFPASW}"
+/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "Unity-iPhone.ipa" -u "${TFUSER}" -p "${TFPASW}"
 ```

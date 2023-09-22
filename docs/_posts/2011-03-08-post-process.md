@@ -21,7 +21,7 @@ categories:
 [![blur](/wp-content/uploads/2011/03/blur_thumb.jpg "blur")](/wp-content/uploads/2011/03/blur.jpg)
 
 ```
-float2 PixelKernel\[g\_cKernelSize\] =   
+float2 PixelKernel[g_cKernelSize] =   
 {
     { 0, -6 },
     { 0, -5 },
@@ -38,7 +38,7 @@ float2 PixelKernel\[g\_cKernelSize\] =
     { 0, 6 },
 };
 
-static const float BlurWeights\[g\_cKernelSize\] =
+static const float BlurWeights[g_cKernelSize] =
 {
     0.002216,
     0.008764,
@@ -59,9 +59,9 @@ static const float BlurWeights\[g\_cKernelSize\] =
 float4 PostProcessPS( float2 Tex : TEXCOORD0 ) : COLOR0
 {
     float4 Color = 0;
-    for (int i = 0; i < g\_cKernelSize; i++)
+    for (int i = 0; i < g_cKernelSize; i++)
     {
-        Color += tex2D( g\_samSrcColor, Tex + PixelKernel\[i\].xy ) \* BlurWeights\[i\];
+        Color += tex2D( g_samSrcColor, Tex + PixelKernel[i].xy ) * BlurWeights[i];
     }
     return Color;
 }
@@ -74,7 +74,7 @@ float4 PostProcessPS( float2 Tex : TEXCOORD0 ) : COLOR0
 [![edgedetect](/wp-content/uploads/2011/03/edgedetect_thumb.jpg "edgedetect")](/wp-content/uploads/2011/03/edgedetect.jpg)
 
 ```
-float2 PixelKernel\[4\] =
+float2 PixelKernel[4] =
 {
     { 0, 1},
     { 1, 0},
@@ -85,10 +85,10 @@ float2 PixelKernel\[4\] =
 //Detects and highlights edges
 float4 PostProcessPS( float2 Tex : TEXCOORD0 ) : COLOR0
 {
-    float4 Orig = tex2D( g\_samSrcNormal, Tex );
+    float4 Orig = tex2D( g_samSrcNormal, Tex );
     float4 Sum = 0;
     for( int i = 0; i < 4; i++ )
-        Sum += saturate( 1 – dot( Orig.xyz, tex2D( g\_samSrcNormal, Tex + TexelKernel\[i\] ).xyz ) );
+        Sum += saturate( 1 – dot( Orig.xyz, tex2D( g_samSrcNormal, Tex + TexelKernel[i] ).xyz ) );
     return Sum;
 }
 ```
@@ -112,10 +112,10 @@ static const float fWhiteCutoff = 0.8f;
 // Perform a high-pass filter on the source texture
 float4 BrightPassFilter( in float2 Tex : TEXCOORD0 ) : COLOR0
 {
-    float3 ColorOut = tex2D( g\_samSrcColor, Tex );
+    float3 ColorOut = tex2D( g_samSrcColor, Tex );
     //Tone Mapping
-    ColorOut \*= fMiddleGray / ( Luminance + 0.001f );
-    ColorOut \*= ( 1.0f + ( ColorOut / ( fWhiteCutoff \* fWhiteCutoff ) ) );
+    ColorOut *= fMiddleGray / ( Luminance + 0.001f );
+    ColorOut *= ( 1.0f + ( ColorOut / ( fWhiteCutoff * fWhiteCutoff ) ) );
     ColorOut -= 5.0f;
     ColorOut = max( ColorOut, 0.0f );
     ColorOut /= ( 10.0f + ColorOut );

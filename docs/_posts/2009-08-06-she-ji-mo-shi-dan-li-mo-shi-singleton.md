@@ -72,23 +72,23 @@ Singleton 类定义如下
 class Singleton
 {
     public:
-    static Singleton\* Instance();
+    static Singleton* Instance();
     protected:
     Singleton();
     private:
-    static Singleton\* \_instance;
+    static Singleton* _instance;
 };
 ```
 
 相应的实现是
 
 ```
-Singleton\* Singleton::\_instance = 0;
-Singleton\* Singleton::Instance()
+Singleton* Singleton::_instance = 0;
+Singleton* Singleton::Instance()
 {
-    if(\_instance == 0)
+    if(_instance == 0)
     {
-        \_instance = new Singleton;
+        _instance = new Singleton;
     }
 }
 ```
@@ -113,7 +113,7 @@ Smalltalk中，返回唯一实例的函数被实现为Singleton类的一个类�
 new
 self error:’connot create new object’
 default
-SoleInstance isNil ifTrue: \[SoleInstance := super new\].
+SoleInstance isNil ifTrue: [SoleInstance := super new].
 ^ SoleInstance
 ```
 
@@ -135,29 +135,29 @@ SoleInstance isNil ifTrue: \[SoleInstance := super new\].
 class Singleton
 {
 public:
-    static void Register(const char\* name,Singleton\*);
-    static Singleton\* Instance();
+    static void Register(const char* name,Singleton*);
+    static Singleton* Instance();
 protected:
-    static Singleton\* Lookup(const char\* name);
+    static Singleton* Lookup(const char* name);
 private:
-    static Singleton\* \_instance;
-    static List<NameSingletonPair>\* \_registry;
+    static Singleton* _instance;
+    static List<NameSingletonPair>* _registry;
 };   
 ```
 
 Register以给定的名字注册Singleton实例。为保证注册表简单，我们将让它存储一列NameSingletonPair对象。每个NameSingletonPair将一个名字映射到一个单件。Lookup操作根据给定单件的名字进行查找。我们假定一个环境变量指定了所需要的单件的名字。
 
 ```
-Singleton\* Singleton::Instance()
+Singleton* Singleton::Instance()
 {
-    if(\_instance == 0)
+    if(_instance == 0)
     {
-        const char\* singletonName = getenv("SINGLETON");
+        const char* singletonName = getenv("SINGLETON");
         //user or environment supplies this at startup
-        \_instance = Lookup(singletonName);
+        _instance = Lookup(singletonName);
         //Lookup returns 0 if there’s no such singleton
     }
-    return \_instance;
+    return _instance;
 }
 ```
 
@@ -188,52 +188,52 @@ Singleton类不再负责创建单件。它的主要职责是使得供选择的�
 class MazeFactory
 {
     public:
-    static MazeFactory\* Instance();
+    static MazeFactory* Instance();
     //existing interface goes here
     protected:
     MazeFactory();
     private:
-    static MazeFactory\* \_instance;
+    static MazeFactory* _instance;
 };
 ```
 
 相应的实现是：
 
 ```
-MazeFactory\* MazeFactory::\_instance = 0;
-MazeFactory\* MazeFactory::Instance()
+MazeFactory* MazeFactory::_instance = 0;
+MazeFactory* MazeFactory::Instance()
 {
-    if(\_instance == 0)
+    if(_instance == 0)
     {
-        \_instance = new MazeFactory;
+        _instance = new MazeFactory;
     }
-    return \_instance;
+    return _instance;
 }
 ```
 
 现在让我们考虑当存在MazeFactory的多个子类，而且应用必须决定使用哪一个子类时的情况。我们将通过环境变量选择迷宫的种类并根据该环境变量的值增加代码用于实例化适当的MazeFactory子类。Instance 操作是增加这些代码的好地方，因为它已经实例化了MazeFactory：
 
 ```
-MazeFactory\* MazeFactory::Instance()
+MazeFactory* MazeFactory::Instance()
 {
-    if(\_instance == 0)
+    if(_instance == 0)
     {
-        const char\* mazeStyle = getenv("MAZESTYLE");
+        const char* mazeStyle = getenv("MAZESTYLE");
         if(strcmp(mazeStyle,"bombed")==0)
         {
-            \_instance = new BombedMazeFactory;
+            _instance = new BombedMazeFactory;
         }
         else if(strcmp(mazeStyle,"enchanted") == 0)
         {
-            \_instance = new EnchantedMazeFactory;
+            _instance = new EnchantedMazeFactory;
         }
         //……other possible subclasses
         else
         { //default
-            \_instance = new MazeFactory;
+            _instance = new MazeFactory;
         }
     }
-    return \_instance;
+    return _instance;
 }
 ```
 

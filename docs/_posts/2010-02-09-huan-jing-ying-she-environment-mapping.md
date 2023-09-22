@@ -43,63 +43,63 @@ UV的计算利用球体表面的法线来计算。计算公式如下：
 
 然后创建Cubemap贴图
 
-> pd3dDevice-&gt;CreateCubeTexture(256,1,D3DUSAGE\_RENDERTARGET, D3DFMT\_A8R8G8B8,D3DPOOL\_DEFAULT , &amp;m\_pCubeMap,NULL );
+> pd3dDevice-\>;CreateCubeTexture(256,1,D3DUSAGE\_RENDERTARGET, D3DFMT\_A8R8G8B8,D3DPOOL\_DEFAULT , &m\_pCubeMap,NULL );
 
 注意这里用到了D3DUSAGE\_RENDERTARGET，也就是说我们的Cubemap需要靠RenderTarget绘制。
 
 如果需要的话，深度缓冲也可以考虑在内。
 
 ```
-IDirect3DSurface9\* g\_pDepthCube = NULL;
+IDirect3DSurface9* g_pDepthCube = NULL;
 DXUTDeviceSettings d3dSettings = DXUTGetDeviceSettings();
-pd3dDevice-&gt;CreateDepthStencilSurface( 256, 256, d3dSettings.pp.AutoDepthStencilFormat,D3DMULTISAMPLE\_NONE,0,TRUE,&amp;g\_pDepthCube, NULL );
+pd3dDevice->CreateDepthStencilSurface( 256, 256, d3dSettings.pp.AutoDepthStencilFormat,D3DMULTISAMPLE_NONE,0,TRUE,&g_pDepthCube, NULL );
 ```
 
 绘制函数
 
 ```
-void RenderSceneIntoCubeMap( IDirect3DDevice9 \*pd3dDevice, double fTime )
+void RenderSceneIntoCubeMap( IDirect3DDevice9 *pd3dDevice, double fTime )
 {
     HRESULT hr;
     // Cubemap使用的投影矩阵
     D3DXMATRIXA16 mProj;
-    D3DXMatrixPerspectiveFovLH( &amp;mProj, D3DX\_PI \* 0.5f, 1.0f, 0.01f, 100.0f );
+    D3DXMatrixPerspectiveFovLH( &mProj, D3DX_PI * 0.5f, 1.0f, 0.01f, 100.0f );
     LPDIRECT3DSURFACE9 pRTOld = NULL;
-    V( pd3dDevice-&gt;GetRenderTarget( 0, &amp;pRTOld ) );
+    V( pd3dDevice->GetRenderTarget( 0, &pRTOld ) );
     LPDIRECT3DSURFACE9 pDSOld = NULL;
 
-    //if( SUCCEEDED( pd3dDevice-&gt;GetDepthStencilSurface( &amp;pDSOld ) ) )
+    //if( SUCCEEDED( pd3dDevice->;GetDepthStencilSurface( &pDSOld ) ) )
     //{
     // // 如果使用深度缓冲
-    // V( pd3dDevice-&gt;SetDepthStencilSurface( g\_pDepthCube ) );
+    // V( pd3dDevice->SetDepthStencilSurface( g_pDepthCube ) );
     //}
 
-    for( int nFace = 0; nFace &lt; 6; ++nFace ) //依次完成Cubemap中的六个面的绘制
+    for( int nFace = 0; nFace < 6; ++nFace ) //依次完成Cubemap中的六个面的绘制
     {
         LPDIRECT3DSURFACE9 pSurf;
-        V( m\_pCubeMap-&gt;GetCubeMapSurface( (D3DCUBEMAP\_FACES)nFace, 0, &amp;pSurf ) );
-        V( pd3dDevice-&gt;SetRenderTarget( 0, pSurf ) );
-        SAFE\_RELEASE( pSurf );
+        V( m_pCubeMap->GetCubeMapSurface( (D3DCUBEMAP_FACES)nFace, 0, &pSurf ) );
+        V( pd3dDevice->SetRenderTarget( 0, pSurf ) );
+        SAFE_RELEASE( pSurf );
         D3DXMATRIXA16 mView = DXUTGetCubeMapViewMatrix( nFace );
-        V( pd3dDevice-&gt;Clear( 0L, NULL, D3DCLEAR\_ZBUFFER,0x000000ff, 1.0f, 0L ) );
-        pd3dDevice-&gt;SetTransform(D3DTS\_VIEW,&amp;mView);
-        pd3dDevice-&gt;SetTransform(D3DTS\_PROJECTION,&amp;mProj);
-        if( SUCCEEDED( pd3dDevice-&gt;BeginScene() ) )
+        V( pd3dDevice->Clear( 0L, NULL, D3DCLEAR_ZBUFFER,0x000000ff, 1.0f, 0L ) );
+        pd3dDevice->SetTransform(D3DTS_VIEW,&mView);
+        pd3dDevice->SetTransform(D3DTS_PROJECTION,&mProj);
+        if( SUCCEEDED( pd3dDevice->BeginScene() ) )
         {
             //在这里绘制环境
-            pd3dDevice-&gt;EndScene();
+            pd3dDevice->EndScene();
         }
     }
 
     // Restore depth-stencil buffer and render target
-    /\*if( pDSOld )//如果使用深度缓冲
+    /*if( pDSOld )//如果使用深度缓冲
     {
-        V( pd3dDevice-&gt;SetDepthStencilSurface( pDSOld ) );
-        SAFE\_RELEASE( pDSOld );
-    }\*/
+        V( pd3dDevice->SetDepthStencilSurface( pDSOld ) );
+        SAFE_RELEASE( pDSOld );
+    }*/
 
-    V( pd3dDevice-&gt;SetRenderTarget( 0, pRTOld ) );
-    SAFE\_RELEASE( pRTOld );
+    V( pd3dDevice->SetRenderTarget( 0, pRTOld ) );
+    SAFE_RELEASE( pRTOld );
 }
 ```
 
@@ -117,7 +117,7 @@ void RenderSceneIntoCubeMap( IDirect3DDevice9 \*pd3dDevice, double fTime )
 
 ```
 texture EnvironmentMap;
-samplerCUBE EnvironmentSampler = sampler\_state
+samplerCUBE EnvironmentSampler = sampler_state
 {
     Texture = (EnvironmentMap);
     MipFilter = LINEAR;

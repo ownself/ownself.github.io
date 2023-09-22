@@ -42,10 +42,10 @@ ShadowMap的概念很好理解，整个绘制过程分为两个阶段，首先�
 
 ```
 //换算UV坐标
-float2 ShadowTexC = 0.5 \* vPosLight.xy / vPosLight.w + float2( 0.5, 0.5 );
+float2 ShadowTexC = 0.5 * vPosLight.xy / vPosLight.w + float2( 0.5, 0.5 );
 ShadowTexC.y = 1.0f – ShadowTexC.y;
 //采样并判断深度
-LightAmount = (tex2D( g\_samShadow, ShadowTexC ) &lt; vPosLight.z / vPosLight.w)? 0.0f: 1.0f;
+LightAmount = (tex2D( g_samShadow, ShadowTexC ) < vPosLight.z / vPosLight.w)? 0.0f: 1.0f;
 ```
 
 最后根据阴影信息混合颜色即可。
