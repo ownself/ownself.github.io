@@ -26,6 +26,7 @@ author: Jimmy Liu
 
 navbar-links:
   About Me: "aboutme"
+  Search: "search"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
