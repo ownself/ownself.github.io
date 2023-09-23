@@ -9,7 +9,7 @@ permalink: /2012/objective-c-de-properties.html
 rumputhijau_meta_box_input_image:
     - ''
 categories:
-    - 'Mac&amp;iOS'
+    - 'MacAndiOS'
 ---
 
 Objective-C是苹果为Cocoa框架下设计的面向对象语言，最早为开发Mac平台的程序服务，但现在随着iOS平台的兴盛，Obj-C渐渐也变为主流语言之一了，我自己也没想到过要和Obj-C打交道，但现在的工作是开发Civilization Revolution的iOS版本，自然要迎头赶上。

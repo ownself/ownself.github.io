@@ -10,7 +10,7 @@ categories:
     - 历程
 ---
 
-[![lady-bug](/wp-content/uploads/2013/11/lady-bug-300x180.jpg)](/wp-content/uploads/2013/11/lady-bug.jpg)
+![lady-bug](/wp-content/uploads/2013/11/lady-bug.jpg)
 
 最近Quora上比较火的一个帖子，有趣的是我也曾有过一段花了很长时间修复一个Bug的惨痛经历，Bug本身并算不上难修到夸张的程度，但是Debug环境的恶劣等等周边因素加在一起却造就了这个大概是我一生也很再遇到一个同等级别的Bug了。
 

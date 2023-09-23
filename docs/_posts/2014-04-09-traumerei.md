@@ -20,4 +20,4 @@ categories:
 
 [《Traumerei》曲谱下载](https://onedrive.live.com/redir?resid=507861A5FFB49BEA!5351&authkey=!AEMSI6YY49yD4YA&ithint=file%2c.gp5)
 
-[![Traumerei](/wp-content/uploads/2014/04/Traumerei.png)](/wp-content/uploads/2014/04/Traumerei.png)
+![Traumerei](/wp-content/uploads/2014/04/Traumerei.png)

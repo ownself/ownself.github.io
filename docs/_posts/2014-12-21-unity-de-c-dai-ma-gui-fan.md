@@ -32,13 +32,13 @@ tags:
 
 - 花括号是应当另起一行(Windows)还是跟随同一行(Linux)一直是工程师们的“圣战”，Unity的Sample Code采用的是Linux风格，而Microsoft.Net则自然是Windows风格，这里的建议是根据项目的具体开发环境来进行规范，如果大家都使用Visual Studio来进行开发，自然遵循Windows风格更方便
 - 使用Tab进行缩进
-- if、while、for等关键词后应有一个空格［eg. “if (a == b)”］
-- 运算符前后应各有一个空格［eg. “a = b + c;”］
+- if、while、for等关键词后应有一个空格［eg. "if (a == b)"］
+- 运算符前后应各有一个空格［eg. "a = b + c;"］
 
 ### 性能考虑
 
 - 使用for()代替foreach()
-- 循环中及时Break［eg. “int a = 5; for (int i = 0; i &lt; 100; ++i) { if (i == a) break; }”］
+- 循环中及时Break［eg. "int a = 5; for (int i = 0; i < 100; ++i) { if (i == a) break; }"］
 - 使用z = a.callD()代替z = a.b.c.d()［[德墨忒尔定律](http://zh.wikipedia.org/zh/%E5%BE%97%E5%A2%A8%E5%BF%92%E8%80%B3%E5%AE%9A%E5%BE%8B)］
 - 避免重复使用string，因为C#中的string是定长并分配在堆上的，每次赋值都会重新创建一个新的string，可以使用StringBuilder来构建字符串
 

@@ -7,7 +7,7 @@ layout: post
 guid: 'http://www.ownself.org/blog/?p=1371'
 permalink: /2015/testflight-beta-ce-shi.html
 categories:
-    - 'Mac&amp;iOS'
+    - 'MacAndiOS'
 ---
 
 TestFlight曾经作为iOS应用开发非常受欢迎的工具之一，帮助开发者能够自动分发版本，让更多的测试者能够方便快速的在更多的设备上安装测试版本而省却掉万恶的Provisioning Profile。不过也许是因为功能过于强大，苹果恐其被盗版App发行平台所利用，在2014年正式将TestFlight收购招安，并于2015年2月份正式停止了原有TestFlight服务并启用了苹果自己的服务版本，发布后的正式名字改为TestFlight Beta Testing。
@@ -24,11 +24,11 @@ TestFlight曾经作为iOS应用开发非常受欢迎的工具之一，帮助开�
 
 当应用程序记录创建好后，我们就可以上传用以TestFlight的版本了，这个版本需要以公司的Distribution的Certificate加Provisioning profile编的Adhoc Release版，虽然在iTunesConnect后台看到是可以使用Application Loader上传的，但是似乎还是使用Xcode来上传更方便一些：设置好Provisioning profile和Code signing后，直接Archive，Archive好后在Organizer里就可以直接上传。
 
-[![上传版本](/wp-content/uploads/2015/08/submitapp.png)](/wp-content/uploads/2015/08/submitapp.png)
+![上传版本](/wp-content/uploads/2015/08/submitapp.png)
 
 要注意的是如果你希望收集测试人员所遇到的Crash的Log的话需要勾选上Include app symbols。另外打包的版本要注意记得更新小版本号，否则最后上传时会提醒版本号重复的错误，而大版本号在Beta测试阶段则最好不要轻易改变，因为如果改变大版本号需要重新进行Beta App Review，谁也不希望平白多等几天。另外要留意Apple限制每天我们只能上传2个版本。
 
-[![includesymbol](/wp-content/uploads/2015/08/includingsymbol.png)](/wp-content/uploads/2015/08/includingsymbol.png)
+![includesymbol](/wp-content/uploads/2015/08/includingsymbol.png)
 
 ### Metadata
 

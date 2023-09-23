@@ -7,7 +7,7 @@ layout: post
 guid: 'http://www.ownself.org/blog/?p=1467'
 permalink: /2017/zi-dong-bu-shu-testflight.html
 categories:
-    - 'Mac&iOS'
+    - 'MacAndiOS'
 ---
 
 之前公司里的项目需要部署版本到TestFlight给合作商时，都是由我来手动编专门的版本，再上传到iTunesConnect，不过随着需求越来越频繁，就迫切需要将这部分的工作交给CI来做了。

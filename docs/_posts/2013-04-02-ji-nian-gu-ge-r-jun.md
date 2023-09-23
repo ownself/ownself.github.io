@@ -10,7 +10,7 @@ categories:
     - 杂感
 ---
 
-[![Google Reader](/wp-content/uploads/2013/08/googlereader-150x150.jpg)](/wp-content/uploads/2013/08/googlereader.jpg)
+![Google Reader](/wp-content/uploads/2013/08/googlereader.jpg)
 
 互联网诞生至今，有两样东西是我最喜欢的，一个是Email，另一个是Blog，喜欢它们的程度以至于在我向往的极端世界里，这两样东西对于互联网就足够了，邮件是你和别人联系的最本质的方式，而博客，则是你表达自己的最佳途径。
 

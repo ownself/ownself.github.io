@@ -10,7 +10,7 @@ categories:
     - IT
 ---
 
-[![message](/wp-content/uploads/2014/11/message-150x150.png)](/wp-content/uploads/2014/11/message.png)
+![message](/wp-content/uploads/2014/11/message.png)
 
 许多年以来，我一直在想目前我们所属的这个时代最完美最理想的文字信息服务（Text Message）应该是什么样的，我曾经寄希望过电子邮件，我喜爱电子邮件最重要的原因是因为开放，服务商需要遵循统一的标准，他们无法强迫用户因为鲶鱼效应而被迫固守其生态圈，而唯一能做的就是提供良好用户体验来竞争，QQ邮箱用的人再多，我选择其他的邮箱同样可以和使用QQ邮箱的朋友们正常联系。
 

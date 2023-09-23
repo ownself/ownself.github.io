@@ -28,7 +28,9 @@ Key：场景的Key将决定整个场景的亮度倾向，倾向偏亮亦或是�
 
 [![tone2](/wp-content/uploads/2011/03/tone2_thumb.jpg "tone2")](/wp-content/uploads/2011/03/tone2.jpg)
 
-[![tonekey](/wp-content/uploads/2011/03/tonekey_thumb.jpg "tonekey")](/wp-content/uploads/2011/03/tonekey.jpg) 上面的公式用来映射亮度域，α即是前面所讲的Key值，用来控制场景的亮度倾向，一般来说，会使用几个特定的值，0.18是一个适中的Key，0.36或者0.72相对偏亮，0.09甚至0.045则是偏暗。完成映射的场景为了满足计算机能显示的范围还要将亮度范围再映射到\[0,1\]区间，可以通过下面的公式简单的得到\[0,1\]区间的亮度。
+[![tonekey](/wp-content/uploads/2011/03/tonekey_thumb.jpg "tonekey")](/wp-content/uploads/2011/03/tonekey.jpg)
+
+上面的公式用来映射亮度域，α即是前面所讲的Key值，用来控制场景的亮度倾向，一般来说，会使用几个特定的值，0.18是一个适中的Key，0.36或者0.72相对偏亮，0.09甚至0.045则是偏暗。完成映射的场景为了满足计算机能显示的范围还要将亮度范围再映射到\[0,1\]区间，可以通过下面的公式简单的得到\[0,1\]区间的亮度。
 
 [![tone3](/wp-content/uploads/2011/03/tone3_thumb.jpg "tone3")](/wp-content/uploads/2011/03/tone3.jpg)
 

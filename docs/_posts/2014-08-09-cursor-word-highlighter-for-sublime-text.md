@@ -16,10 +16,10 @@ categories:
 
 在Packages Control社区和网上搜索了一圈后找到两个插件是与Highlight有关的，一个叫[WordHighlight](https://github.com/SublimeText/WordHighlight)，另一个是[HighlightWords](https://github.com/seanliang/HighlightWords)。WordHighlight从在GitHub的路径来看似乎是官方的插件之一，但是奇怪的是我没办法让这个插件生效，无论是ST2还是ST3，当然还有一种可能是我没有正确理解这个插件的用处，而也许实际上它就是ST本身自带的高亮工具；HighlightWords是一位叫做[Sean Liang](http://weibo.com/seanliang)的中国朋友开发的插件，这个插件需要你使用快捷键打开搜索框来输入你想高亮的单词，而高亮的效果由于使用了”Fill Background”显得相当的引人注目，不过虽然并不是我想要的插件，但却给我提供了不错的思路。最终实在没办法找到我需要的插件于是只好开始自己写一个，我要感谢两款前面提到的插件，因为实际上我差不多是将两款捏在了一起改成了一个自己想要的插件。
 
-[![CursorWordHighlighter](/wp-content/uploads/2014/08/CursorWordHighlighter.png)](/wp-content/uploads/2014/08/CursorWordHighlighter.png)
+![CursorWordHighlighter](/wp-content/uploads/2014/08/CursorWordHighlighter.png)
 
 [CursorWordHighlighter](https://github.com/ownself/CursorWordHighlighter)
 
-下载并将解压的文件手动拷贝到ST的Packages目录下（也许以后我有时间重构地漂亮一点会看看能不能放到Packages Control里的）。然后插件应该就可以自动生效了，如果没有也许你得重启一下ST，哈&gt;\_&lt;哈，任何你光标所在的单词都会被自动高亮，经过我的反复测试，仅使用边框来绘制高亮配合Comment的颜色可以找到一个不错的注意力的结合点，而且也有别于默认的选中单词后的高亮，而如果你发现有一个变量或者单词需要你持续关注一段时间你还可以使用“强力高亮”（默认快捷键Alt+Enter）来获得持续高亮，直到你手动清除它们（默认快捷键Alt+Shift+Enter）,插件最多支持6种不同颜色的强力高亮。更多的设置诸如Case Sensitive，Enable/Disable，Color等等你都可以在GitHub的文档中找到配置的方法。
+下载并将解压的文件手动拷贝到ST的Packages目录下（也许以后我有时间重构地漂亮一点会看看能不能放到Packages Control里的）。然后插件应该就可以自动生效了，如果没有也许你得重启一下ST，哈>\_<哈，任何你光标所在的单词都会被自动高亮，经过我的反复测试，仅使用边框来绘制高亮配合Comment的颜色可以找到一个不错的注意力的结合点，而且也有别于默认的选中单词后的高亮，而如果你发现有一个变量或者单词需要你持续关注一段时间你还可以使用“强力高亮”（默认快捷键Alt+Enter）来获得持续高亮，直到你手动清除它们（默认快捷键Alt+Shift+Enter）,插件最多支持6种不同颜色的强力高亮。更多的设置诸如Case Sensitive，Enable/Disable，Color等等你都可以在GitHub的文档中找到配置的方法。
 
 如果插件可能会对你有用，欢迎尝试使用，同样任何建议都是非常感激的：）

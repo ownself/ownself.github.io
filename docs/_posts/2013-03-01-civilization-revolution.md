@@ -10,7 +10,7 @@ categories:
     - 历程
 ---
 
-[![文明变革](/wp-content/uploads/2013/08/Civ-Rev.jpg)](/wp-content/uploads/2013/08/Civ-Rev.jpg)
+![文明变革](/wp-content/uploads/2013/08/Civ-Rev.jpg)
 
 我原本打算在一年前写下这篇的，那时《Civilization Revolution》的第二次更新工作刚刚结束，所以我想等真正令人期待的多人模式推出后再来写，但没想到这一等便是将近一年啊，第三次更新终于在前天在App Store上线了，这其中经历的曲折变化真是一言难尽啊。
 

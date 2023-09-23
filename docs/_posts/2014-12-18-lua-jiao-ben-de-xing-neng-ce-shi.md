@@ -51,10 +51,10 @@ end
 
 非常简单哈，然后…（省下无聊的万字测试过程）所以我们得到最终的测试结果如下（华丽丽地）：
 
-[![PerformanceTestLua](/wp-content/uploads/2014/12/PerformanceTestLua.png)](/wp-content/uploads/2014/12/PerformanceTestLua.png)
+![PerformanceTestLua](/wp-content/uploads/2014/12/PerformanceTestLua.png)
 
 我又做了个简单地计算，所以如果读表格费劲的话，大家也可以这样理解：
 
-[![LuaTestConclusion](/wp-content/uploads/2014/12/LuaTestConclusion.png)](/wp-content/uploads/2014/12/LuaTestConclusion.png)
+![LuaTestConclusion](/wp-content/uploads/2014/12/LuaTestConclusion.png)
 
 我们可以看到虽然很不希望这样，但事实是在Lua的效率方面目前C#还是和C++有着巨大的差距，编译Lua脚本上大约3倍的差距，13倍左右的差距在调用Lua函数，而Lua函数内部的解释则在15倍左右。

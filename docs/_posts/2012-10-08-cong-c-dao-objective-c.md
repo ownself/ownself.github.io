@@ -9,7 +9,7 @@ permalink: /2012/cong-c-dao-objective-c.html
 rumputhijau_meta_box_input_image:
     - ''
 categories:
-    - 'Mac&amp;iOS'
+    - 'MacAndiOS'
 ---
 
 随着iOS和Mac设备的兴起，在iOS和Mac上的开发变得越来越重要，但是苹果的开发环境向来自成一体，从语言到设计模式再到IDE，都与我们所熟悉的Windows开发大为不同，C++的程序员在最开始接触苹果开发的时候都是需要进行一些观念上的改变，而首先要面对的便是Objective-C语言。
@@ -90,7 +90,7 @@ Obj-C中还有一个概念是分类，分类不同于子类，只是对原有类
 
 ```
 @interface className (newclassName)
-……//New functions
+    //New functions
 @end
 ```
 

@@ -7,7 +7,7 @@ layout: post
 guid: 'http://www.ownself.org/blog/?p=1436'
 permalink: /2017/zai-osx-xia-pei-zhi-sublimetext-de-perforce-cha-jian.html
 categories:
-    - 'Mac&amp;iOS'
+    - 'MacAndiOS'
 ---
 
 SublimeText是很多人日常使用开发工具了，如果你平时会在Mac上工作，又恰巧使用Perforce来进行版本管理，那么你可能会碰上一点小麻烦——如何让正在编辑的文件能在SublimeText下自动CheckOut。

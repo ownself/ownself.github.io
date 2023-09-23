@@ -85,7 +85,7 @@ PS：另一篇文档关于Scale compensation的官方文档，其中提到了SSC
 
 根据Unreal官方文档，Unreal是支持Non-uniform缩放动画的：[Non-Uniform Scale Animation](https://docs.unrealengine.com/en-US/AnimatingObjects/SkeletalMeshAnimation/NonUniformScale/index.html) 在前面的测试中我们也证实了该功能，此外我们也通过调查Unreal的源代码来了解了Unreal是如何实现对Non-uniform缩放动画的支持的。在“**/Engine/Source/Editor/UnrealEd/Private/SkeletalMeshEdit.cpp**”的函数**UnFbx::FFbxImporter::ImportAnimation()**中：
 
-![](/wp-content/uploads/2021/01/UnrealImportAnim-724x1024.png)
+![](/wp-content/uploads/2021/01/UnrealImportAnim.png)
 
 可以看到在Unreal导入动画进行Resample的过程中，使用了FBXSDK的EvaluateGlobalTransform接口来获取骨骼节点的变换矩阵，通过调试我们可以发现该接口可以自动根据不同的InheritType得到该节点带有正确缩放信息的变换矩阵，而在最后转换为Unreal内部的变换数据结构（FTransform）时，还会对父节点的变换信息进行一个相对变换的计算，其中即会根据父节点的缩放信息来反算子节点的补偿缩放值。
 

@@ -10,7 +10,7 @@ categories:
     - 图形学
 ---
 
-[![2469086930_22c13cea2b](/wp-content/uploads/2010/01/2469086930_22c13cea2b_thumb1.jpg "2469086930_22c13cea2b")](/wp-content/uploads/2010/01/2469086930_22c13cea2b1.jpg)
+[![2469086930_22c13cea2b](/wp-content/uploads/2010/01/2469086930_22c13cea2b_thumb.jpg "2469086930_22c13cea2b")](/wp-content/uploads/2010/01/2469086930_22c13cea2b.jpg)
 
 动态模糊近几年广泛应用于游戏制作的一种特效，可以使得游戏所呈现出的运动画面更接近于真实相机所拍摄出的效果。
 

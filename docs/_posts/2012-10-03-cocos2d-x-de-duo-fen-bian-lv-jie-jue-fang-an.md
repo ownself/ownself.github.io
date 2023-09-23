@@ -9,7 +9,7 @@ permalink: /2012/cocos2d-x-de-duo-fen-bian-lv-jie-jue-fang-an.html
 rumputhijau_meta_box_input_image:
     - ''
 categories:
-    - 'Mac&amp;iOS'
+    - 'MacAndiOS'
 ---
 
 cocos2d-x作为一个跨平台的2D游戏引擎，确实是一个相当不错的2D游戏的跨平台解决方案，不但上手容易，而且性能和兼容性也表现不俗，不过目前还存在一些不足的地方，因为引擎本身尚处在一个发展和成熟的过程中，比如UI的制作流程还很不成熟且有着诸多限制，再比如就是跨平台的多分辨率没有一个明确而清晰的流程。

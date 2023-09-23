@@ -10,13 +10,13 @@ categories:
     - 神作鉴赏
 ---
 
-![犹他海滩](/wp-content/uploads/2014/01/UtahBeach-300x195.png)
+![犹他海滩](/wp-content/uploads/2014/01/UtahBeach.png)
 
 前阵子看了《[兄弟连](http://movie.douban.com/subject/1307847/)》的姊妹篇《[血战太平洋](http://movie.douban.com/subject/1428176/)》，恰巧上海科教频道在播译制版的《[World War II in HD color](http://movie.douban.com/subject/20399314/)》，于是又燃起了对二战的兴趣，看了很多关于二战战役的史料，于是接下来光看已经不过瘾了，就想着找来个二战游戏来过过瘾了，《Call of Duty》之类的FPS实在是打吐了，而且其实更想找来些策略游戏玩玩，虽然有新的《Company of Hero》可以选择，不过还得学怎么玩（现在真的是看见新游戏的教程头就大了，没有以前那么有耐心玩游戏了）就想起来以前大学时候玩过的《Close Combat》（国内译名：近距离作战，以下简称CC）系列了。
 
 上了下他们的[官网](http://matrixgames.com/)，真是不得了，这家公司除了CC之外还有很多作品，将近百款，而且大多都是单机战争策略游戏，而二战题材占了其中将近一半。
 
-![诺曼底登陆](/wp-content/uploads/2014/01/InvadeNormandy-300x175.png)
+![诺曼底登陆](/wp-content/uploads/2014/01/InvadeNormandy.png)
 
 CC是比较老的作品了，全2D的画面和俯视角的地图给人强烈的上世纪90年代的感觉，整个系列的作品分别描述二战中欧洲战场的几大著名战役，分别涵盖了诺曼底登陆、市场花园、突出部战役和苏德东线战场，游戏重现了这些战役中大多数有记载的战斗，在游戏中你可以看到每场战斗的日期地点以及指挥官，详细而且真实，不过因为作品年代久远所以在Win7上会有各种各样的奇怪的问题，于是Matrix Games为这几款作品分别推出了复刻版《[最长一日](http://matrixgames.com/products/368/details/Close.Combat:.The.Longest.Day)》《[最后的阿纳姆](http://matrixgames.com/products/386/details/Close.Combat.-.Last.Stand.Arnhem)》《[守望莱茵](http://matrixgames.com/products/363/details/Close.Combat.-.Wacht.am.Rhein.)》《[铁十字勋章](http://matrixgames.com/products/335/details/Close.Combat.-.Cross.of.Iron)》，还推出了一款关于现代战争的《[现代战术](http://matrixgames.com/products/350/details/Close.Combat.-.Modern.Tactics)》，支持更新的操作系统和更高的屏幕分辨率，开发商以制作二战百科书一样的态度来制作自己的二战策略游戏，严谨的态度和责任感对比起国内搂一笔就跑的开发风格真是让人感慨唏嘘啊。
 

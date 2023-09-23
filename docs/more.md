@@ -9,7 +9,7 @@ guid: 'http://www.ownself.org/blog/?page_id=1670'
 
 - [DirectX](http://www.ownself.org/blog/category/directx)
 - [IT](http://www.ownself.org/blog/category/information-technology)
-- [Mac&amp;iOS](http://www.ownself.org/blog/category/macios)
+- [MacAndiOS](http://www.ownself.org/blog/category/macios)
 - [PHP](http://www.ownself.org/blog/category/php)
 - [Windows开发](http://www.ownself.org/blog/category/windows%e5%bc%80%e5%8f%91)
 - [人工智能](http://www.ownself.org/blog/category/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd)
