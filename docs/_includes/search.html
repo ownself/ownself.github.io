@@ -24,8 +24,7 @@
           "desc"     : "{% if page.title != "" %}{{ page.title | strip_html | escape }}{% else %}{{ page.excerpt | strip_html | escape | strip }}{% endif %}", \
           "category" : "{% if page.tags %}{{ page.tags | join: \', \' }}{% else %}page{% endif %}", \
           "url"      : "{{ site.baseurl }}{{ page.url }}", \
-          "date"     : "{{ page.date | date: '%B %e, %Y' | default: "January 1, 1970" }}", \
-          "content"  : {{ page.content | strip_html | strip_newlines | escape | jsonify }} \
+          "date"     : "{{ page.date | date: '%B %e, %Y' | default: "January 1, 1970" }}" \
         }{% unless forloop.last %},{% endunless %} \
       {% endif %}{% endfor %} \
     ]';

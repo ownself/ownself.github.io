@@ -25,20 +25,20 @@ Leap Motion是目前非常时髦的外设，为体感操作带来了新的尝试
 ```
 public static void Update() 
 {
-	m_Hand = null;
-	m_Frame = null;
-	m_FingersCount = 0;
-	if( m_controller != null )
-	{
-		m_Frame	= m_controller.Frame();
-		if (m_Frame != null)
-		{
-			if (m_Frame.Hands.Count > 0)
-				m_Hand = m_Frame.Hands[0];
-			if (m_Frame.Fingers.Count > 0)
-				m_FingersCount = m_Frame.Fingers.Count;
-		}
-	}
+    m_Hand = null;
+    m_Frame = null;
+    m_FingersCount = 0;
+    if( m_controller != null )
+    {
+        m_Frame = m_controller.Frame();
+        if (m_Frame != null)
+        {
+            if (m_Frame.Hands.Count > 0)
+                m_Hand = m_Frame.Hands[0];
+            if (m_Frame.Fingers.Count > 0)
+                m_FingersCount = m_Frame.Fingers.Count;
+        }
+    }
 }
 ```
 

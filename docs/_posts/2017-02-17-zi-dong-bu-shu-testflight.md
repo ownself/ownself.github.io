@@ -50,10 +50,10 @@ xcodebuild -exportArchive
 ```
 <plist version="1.0">
 <dict>
-	<key>method</key>
-	<string>app-store</string>
-	<key>teamID</key>
-	<string>XXXXXXXXXX</string>
+    <key>method</key>
+    <string>app-store</string>
+    <key>teamID</key>
+    <string>XXXXXXXXXX</string>
 </dict>
 </plist>
 ```
