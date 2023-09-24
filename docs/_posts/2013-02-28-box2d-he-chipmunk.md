@@ -147,4 +147,8 @@ cpSpaceHashEach(space->activeShapes, &forEachShape, nil);
 cpSpaceHashEach(space->staticShapes, &forEachShape, nil);
 ```
 
-Chipmunk的碰撞是通过函数cpSpaceAddCollisionHandler(space, defaultCollisionType, defaultCollisionType, &amp;contactBegin, NULL, NULL, &amp;contactEnd, NULL);来完成的。其中contactBegin和contactEnd是两个静态函数，如果碰撞发生，他们会返回YES，如果返回NO，那么我们可以忽略碰撞。
+Chipmunk的碰撞是通过下列函数来完成的。其中contactBegin和contactEnd是两个静态函数，如果碰撞发生，他们会返回YES，如果返回NO，那么我们可以忽略碰撞。
+
+```
+cpSpaceAddCollisionHandler(space, defaultCollisionType, defaultCollisionType, &contactBegin, NULL, NULL, &contactEnd, NULL);
+```
