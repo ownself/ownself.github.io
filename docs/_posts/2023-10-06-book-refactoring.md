@@ -192,7 +192,7 @@ PS2：我把笔记部分也贴出来了，有些凌乱，不过有兴趣的朋�
 
 ## 第六章：重新组织函数
 
-### 1. Extract Method
+**1. Extract Method**
 
 将过长的函数中部分值得复用的部分提取为单独的函数
 
@@ -200,57 +200,57 @@ PS2：我把笔记部分也贴出来了，有些凌乱，不过有兴趣的朋�
 
 > 关键在于函数名称和函数本题之间的语义距离（如果判定函数长度是否合适）
 
-### 2. Inline Method / Temp
+**2. Inline Method / Temp**
 
 将不必要的函数调用或临时变量声明直接展开放入函数中 / 如果临时变量妨碍到其他的重构，可以对其进行内联化（如果要方便调试的话，则不应该内联化）
 
 > 间接层有其价值，但不是所有的间接层都有价值
 
-### 3. Replace Temp with Query
+**3. Replace Temp with Query**
 
 使用接口来代替局部变量的赋值与使用，潜在以牺牲性能为代价，**我不是很赞同**
 
 此外在我的经验中，如果大量编写get这种小函数，实际上会对代码的可读性逐渐产生负面的效果
 
-### 4. Split Temporary Variable
+**4. Split Temporary Variable**
 
 局部变量尽量不要一心二用。针对每次赋值，创造一个独立、对应的临时变量
 
 > 同一个临时变量承担两件不同的事情，会令代码阅读者糊涂
 
-### 5. Remove Assignments to Parameters
+**5. Remove Assignments to Parameters**
 
 不要对函数的参数进行赋值（主要当作常量使用，按引用传递的话应当做return来处理）
 
-### 6. Replace Method with method Object
+**6. Replace Method with method Object**
 
 将函数中用到的局部变量也封装为对象，**对于这类通过引入新的类型或增加成员变量来换取可读性的方法军不是很赞成**。
 
 ## 第章：在对象之间搬移特性
 
-### 1. Move Method / Field
+**1. Move Method / Field**
 
 如果一个类中的方法/变量主要被另一个使用，那么应该移动至更"亲近"的类中
 
-### 2. Extract / Inline Class
+**2. Extract / Inline Class**
 
 如果部分成员变量具有共同的逻辑特性，那么就应该被提取至单独的类中；反之则应该融合至同一个类中
 
-### 3. Hide Delegate / Remove Middle Man
+**3. Hide Delegate / Remove Middle Man**
 
 通过添加新的接口来隐藏委托调用，或去除中间接口/类来进行直接调用（去除委托）
 
-### 4. Introduce Foreign Method
+**4. Introduce Foreign Method**
 
 如果你使用的对象中缺少部分函数功能，而你又无法修改（第三方库），则可以通过外加函数（全局或静态）来实现，但如果你需要大量的外加函数，则说明应该使用"Introduce Local Extension"
 
-### 5. Introduce Local Extension
+**5. Introduce Local Extension**
 
 对第三方的库中的类进行封装，来实现功能的扩展或者希望的接口上的修改
 
 ## 第七章：重新组织数据
 
-### 1. Self Encapsulate Field
+**1. Self Encapsulate Field**
 
 全部是用Get/Set函数来对成员变量进行访问（好处我能理解，即在未来出现问题时非常方便调试，但是感觉写起来就很繁琐）
 
@@ -260,86 +260,86 @@ PS2：我把笔记部分也贴出来了，有些凌乱，不过有兴趣的朋�
 
 > **我比较喜欢先使用直接访问方式，知道这种方式给我来麻烦为止，此时我就会转而使用间接访问方式**。
 
-### 2. Replace Data Value with Object
+**2. Replace Data Value with Object**
 
 鼓励对每一个成员变量进行类封装吗？？好家伙，疯了吧……不认同，不认同
 
-### 3. Change Value to Reference, Vice versa
+**3. Change Value to Reference, Vice versa**
 
 > 如果一个类衍生出许多彼此相等的实例，则希望通过引用来保证他们均指向同一个对象（**尽可能保证数据的单一同源性**）
 
 > 如果当引用对象开始变得难以使用时，则应该将其改为值对象
 
-### 4. Replace Array with Object
+**4. Replace Array with Object**
 
 > 对于数组中元素各自代表不同东西的情况，应该使用类来进行替换，用不同的字段来表示
 
-### 5. Duplicate Observed Data
+**5. Duplicate Observed Data**
 
 将GUI控件中的数据复制到领域对象中，建立一个Observer模式（大概就是MVC那套吧）
 
 > 你不能仅仅只是移动数据，必须将它复制到新的对象中，并提供相应的同步机制
 
-### 6. Change Unidirectional Association to Bidirectional, Vice versa
+**6. Change Unidirectional Association to Bidirectional, Vice versa**
 
 > 当两个类都需要使用对方特性，但期间只有一条单向链接。则应添加一个反向指针，并使修改函数能够同时更新两条连接（有点像AssetRequest和BundleRequest）
 
 > 反之当一个类不再需要另一个类的特性时，则可以去掉不必要的关联
 
-### 7. Replace Magic Number with Symbolic Constant
+**7. Replace Magic Number with Symbolic Constant**
 
 魔法数字应该使用常量来表示
 
-### 8. Encapsulate Filed
+**8. Encapsulate Filed**
 
 其实和第1条说的是同一件事，将public字段改为private，并提供get函数
 
-### 9. Encapsulate Collection
+**9. Encapsulate Collection**
 
 对于类中的集合对象，于其提供对象本身的引用，更应该提供接口的封装（收敛功能权限）
 
-### 10. Replace Recode with Data Class
+**10. Replace Recode with Data Class**
 
 鼓励使用数据类来代替Struct，并提供get接口来访问
 
-### 11. Replace Type Code with Class / Subclasses / State
+**11. Replace Type Code with Class / Subclasses / State**
 
 和第2条非常类似，但是针对Type Code类似的数据；使用Subclass的方式实际上是利用多态来代替分支语句；使用State模式或Strategy模式来实现（通过Switch语句来创建不同的子类）
-### 12. Replace Subclass with Fields
+**12. Replace Subclass with Fields**
 
 如果情况足够简单，则可以将多态改回分支
 
 ## 第八章：简化条件表达式
 
-### 1. Decompose Conditional
+**1. Decompose Conditional**
 
 将if语句中较复杂的判别式，提取为单独的函数
 
-### 2. Consolidate Conditional Expression
+**2. Consolidate Conditional Expression**
 
 将多个结果相同的条件判别式，合并成一个（但我觉得大部分情况下还是不合并的好，因为总会需要频繁改动）
 
-### 3. Consolidate Duplicate Conditional Fragments
+**3. Consolidate Duplicate Conditional Fragments**
 
 将条件分支中重复的代码搬移到条件表达式外
 
-### 4. Remove Control Flag
+**4. Remove Control Flag**
 
 使用break或者return语句来代替控制标记
 
-### 5. Replace Nested Conditional with Guard Clausese
+**5. Replace Nested Conditional with Guard Clausese**
 
 尽量避免使用重复嵌套较深的条件语句，使用平铺的方式来表达（翻译为卫语句？）
 
-### 6. Replace Conditioanl with Polymorphism
+**6. Replace Conditioanl with Polymorphism**
 
 这不又是上一章中的的第11条吗？看到这里已经感觉到这本书中还是存在大量雷同的内容了……
 
-### 7. Introduce Null Object
+**7. Introduce Null Object**
 
 在继承体系中引入Null Object类，可以改善你代码中需要大量重复判断null的情况
 
-### 8. Introduce Assertion
+**8. Introduce Assertion**
 
 > 当某一段代码需要对程序状态做出某种假设时，可以使用断言来明确表现这种假设
 
@@ -351,53 +351,53 @@ PS2：我把笔记部分也贴出来了，有些凌乱，不过有兴趣的朋�
 
 > 我有一个坚守的很有价值的习惯：明确地将"修改对象状态"的函数（修改函数）和"查询对象状态"的函数（查询函数）分开设计。
 
-### 1. Rename Method
+**1. Rename Method**
 
 名字起的不合适的情况
 
 > 记住，你的代码首先是为人写的，其次才是为计算机写的。而人需要良好名称的函数。
 
-### 2. Add / Remove Parameter
+**2. Add / Remove Parameter**
 
 > 过长的参数列是不好的味道
 
 > 程序员可能经常添加参数，却往往不愿意去掉它们。他们打的如意算盘是：无论如何，多余的参数不会引起任何问题，而且以后还可能用得上它
 
-### 3. Separate Query from Modifier
+**3. Separate Query from Modifier**
 
 将查询函数和修改函数分离
 
 > 如果你在一个多线程系统中工作，肯定知道这样一个重要的惯用手法：在同一个动作中完成检查和赋值
 
-### 4. Parameterize Method
+**4. Parameterize Method**
 
 例如将fivePercentRaise()和tenPercentRaise()合并为raise(percentage)
 
-### 5. Replace Parameter with Explicit Method
+**5. Replace Parameter with Explicit Method**
 
 将setValue(width, height)拆分成setWidth()和setHeight()
 
-### 6. Preserve Whole Object
+**6. Preserve Whole Object**
 
 将需要从同一对象中访问的多个属性值，封装成统一的对象来返回（连作者都说这条具有两面性）
 
-### 7. Replace Parameter with Methods
+**7. Replace Parameter with Methods**
 
 通过函数内部调用其他函数的方式来减少传递的参数的数量
 
-### 8. Introduce Parameter Object
+**8. Introduce Parameter Object**
 
 上一条思想的延续，通过将多个参数合并为新的类对象来减少传递参数的数量
 
-### 9. Remove Setting Method
+**9. Remove Setting Method**
 
 > 有些人甚至会在构造函数中使用设值函数！（那么构造函数中是否建议调用Init()函数来完成初始化）
 
-### 10. Hide Method
+**10. Hide Method**
 
 对于外部不会调用的函数应当修改为private
 
-### 11. Replace Constructor with Factory Method
+**11. Replace Constructor with Factory Method**
 
 通过工厂函数来创建对象，例如：（好处主要是可以集中管理Code Type的逻辑）
 
@@ -411,11 +411,11 @@ Employee(int type) { _type = type; }
 static Employee create(int type) { return new Employee(type); }
 ```
 
-### 12. Encapsulate Downcast
+**12. Encapsulate Downcast**
 
 > 将类型转换（Casting）的动作移到函数中，你不应该要求用户来承担Casting的工作，应该由接口提供准确的数据类型
 
-### 13. Replace Error Code with Exception
+**13. Replace Error Code with Exception**
 
 **异常是语言级别的错误（崩溃）处理机制，它可以让错误分析变得更加容易，但并不能消除错误（崩溃）**
 
@@ -423,47 +423,47 @@ static Employee create(int type) { return new Employee(type); }
 
 **使用错误码的缺点是不便于理解**
 
-### 14. Replace Exception with Test
+**14. Replace Exception with Test**
 
 > 异常应该只用于异常的、罕见的行为，也就是那些产生意料之外的错误的行为，而不应该成为条件检查的代替品
 
 ## 第十章：处理概括关系
 
-### 1. Pull Up Field / Method
+**1. Pull Up Field / Method**
 
 > 如果子类中的多个字段/函数使用方式相似，那么他就应当被归纳到超类中
 
-### 2. Pull Up Constructor Body
+**2. Pull Up Constructor Body**
 
 字段的初始化应当尽量在超类中完成，子类通过调用超类的构造函数来完成对应字段的初始化
 
-### 3. Push Down Field / Method
+**3. Push Down Field / Method**
 
 当超类中的字段/方法只是为某一个子类实现的，那么它应当移至对应的子类中
 
-### 4. Extract Subclass
+**4. Extract Subclass**
 
 如果类中的某些特性只被某些（并非全部）实例用到，那么应当将这部分特性移至子类中
 
-### 5. Extract Superclass
+**5. Extract Superclass**
 
 和第1条思想相同（又是在凑字数……）
 
-### 6. Extract Interface
+**6. Extract Interface**
 
 不同的类中相同的逻辑最好通过接口的方式来组织
 
-### 7. Collapse Hierarchy
+**7. Collapse Hierarchy**
 
 子类和超类区别不大时，可以合并在一起
 
-### 8. Form TemPlate Method
+**8. Form TemPlate Method**
 
 > 将子类直接一些存在区别的操作分别放进独立的函数中，并保持相同的签名，在原函数变得相同后，上移至超类
 
 将子类中不同的实现提取至专门的接口中，核心目标是尽可能减少重复代码
 
-### 9. Replace Inheritance with Delegation, Vice versa
+**9. Replace Inheritance with Delegation, Vice versa**
 
 使用组合代替继承！（这个我强烈赞同）
 
@@ -479,25 +479,25 @@ static Employee create(int type) { return new Employee(type); }
 
 四个大型重构：
 
-### 1. Tease Apart Inheritance：梳理并分解继承体系
+**1. Tease Apart Inheritance：梳理并分解继承体系**
 
 > 某个继承体系同时承担了两项责任，则应该分别建立独立继承体系，并通过组合的方式来实现互相调用
 
 AssetRequest和BundleRequest就是活生生的例子
 
-### 2. Convert Procedural Design to Objects
+**2. Convert Procedural Design to Objects**
 
 > 将过程化设计转化为对象设计
 
 作者是明显倾向于对象化实现的，但实际上在游戏开发中，很多功能比较单一的模块中处于性能的考虑是会更倾向于过程化的实现风格的！
 
-### 3. Separate Domain from Presentation
+**3. Separate Domain from Presentation**
 
 MVC那一套，把领域逻辑从GUI类中分离出来（这个不是再前面已经讲过了吗？？严重凑字数！）
 
 > MVC模式最核心的价值在于：它将用户界面代码（GUI）和领域逻辑（即模型）分离了
 
-### 4. Extract Hierarchy
+**4. Extract Hierarchy**
 
 > 当你的类做了太多工作，其中一部分工作是以大量条件表达式完成的，则应该为其建立对应的继承体系
 
