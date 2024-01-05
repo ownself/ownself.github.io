@@ -11,7 +11,8 @@ html {
 }
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  /*font-family: 'Lora', 'Times New Roman', serif;*/
+  font-family: "TsangerJinKai01-9128", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
   font-size: 1.125rem;
   color: {{ site.text-col | default: "#404040" }};
   position: relative;
@@ -101,6 +102,28 @@ img::-moz-selection {
 
 img {
   max-width: 100%;
+  box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  webkit-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  moz-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  o-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+}
+
+/* 图片标题 */
+img + em {  display: block; text-align: center; }
+
+.align-left {
+  float: left;
+  margin: 0 20px 20px 0;
+}
+
+.align-right {
+  float: right;
+  margin: 0 0 20px 20px;
+}
+
+.align-center {
+  display: block;
+  margin: 0 auto;
 }
 
 .linked-section {
