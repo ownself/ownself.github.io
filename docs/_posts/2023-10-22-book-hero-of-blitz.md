@@ -1,6 +1,6 @@
 ---
 id: 1734
-title: '[书评]闪击英雄'
+title: '[书评] 闪击英雄'
 date: 2023-10-22 15:32:03 +0800
 author: Jimmy
 layout: post

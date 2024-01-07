@@ -1,6 +1,6 @@
 ---
 id: 1736
-title: '[书评]贫穷的本质'
+title: '[书评] 贫穷的本质'
 date: 2023-12-24 11:31:38 +0800
 author: Jimmy
 layout: post

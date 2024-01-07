@@ -1,6 +1,6 @@
 ---
 id: 1735
-title: '[书评]自卑与超越'
+title: '[书评] 自卑与超越'
 date: 2023-11-06 09:52:26 +0800
 author: Jimmy
 layout: post
