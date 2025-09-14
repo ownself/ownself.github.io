@@ -29,6 +29,9 @@ let BeautifulJekyllJS = {
     BeautifulJekyllJS.initImgs();
 
     BeautifulJekyllJS.initSearch();
+    
+    // Initialize GLightbox for blog post images
+    BeautifulJekyllJS.initLightbox();
   },
 
   initNavbar : function() {
@@ -134,6 +137,37 @@ let BeautifulJekyllJS = {
         $("body").removeClass("overflow-hidden");
       }
     });
+  },
+
+  initLightbox : function() {
+    // Check if GLightbox is available
+    if (typeof GLightbox !== 'undefined') {
+      // Initialize GLightbox for all images in blog posts
+      const lightbox = GLightbox({
+        selector: '.blog-post img, article img',
+        touchNavigation: true,
+        loop: false,
+        autoplayVideos: false,
+        beforeSlideChange: function(prev, current) {
+          // Optional: Add custom logic before slide change
+        }
+      });
+      
+      // Add lightbox class to images for better styling
+      $('.blog-post img, article img').each(function() {
+        const $img = $(this);
+        // Skip images that are already wrapped or have specific classes to exclude
+        if (!$img.parent().is('a') && !$img.hasClass('no-lightbox')) {
+          // Wrap image in a link for GLightbox
+          const imgSrc = $img.attr('src');
+          const imgAlt = $img.attr('alt') || '';
+          $img.wrap(`<a href="${imgSrc}" class="glightbox" data-description="${imgAlt}"></a>`);
+        }
+      });
+      
+      // Reinitialize GLightbox after wrapping images
+      lightbox.reload();
+    }
   }
 };
 
