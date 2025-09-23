@@ -1,0 +1,476 @@
+---
+layout: null
+---
+
+/* Dark Theme CSS for Beautiful Jekyll */
+
+/* CSS Custom Properties for theme colors */
+:root {
+  /* Light theme colors (default) */
+  --bg-color: {{ site.page-col | default: "#FFFFFF" }};
+  --text-color: {{ site.text-col | default: "#404040" }};
+  --link-color: {{ site.link-col | default: "#008AFF" }};
+  --hover-color: {{ site.hover-col | default: "#0085A1" }};
+  --navbar-bg: {{ site.navbar-col | default: "#EAEAEA" }};
+  --navbar-text: {{ site.navbar-text-col | default: "#404040" }};
+  --navbar-border: {{ site.navbar-border-col | default: "#DDDDDD" }};
+  --footer-bg: {{ site.footer-col | default: "#EAEAEA" }};
+  --footer-text: {{ site.footer-text-col | default: "#777777" }};
+  --footer-link: {{ site.footer-link-col | default: "#404040" }};
+  --footer-hover: {{ site.footer-hover-col | default: "#0085A1" }};
+
+  /* Fragment-specific colors */
+  --fragment-bg: #f8f9fa;
+  --fragment-border: #008AFF;
+  --fragment-time-color: #666;
+  --fragment-category-bg: rgba(0, 138, 255, 0.1);
+  --fragment-category-color: #008AFF;
+
+  /* Card and UI element colors */
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --muted-text: #6c757d;
+  --code-bg: #f8f9fa;
+  --blockquote-color: #808080;
+}
+
+/* Dark theme colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --link-color: #4da6ff;
+    --hover-color: #66b3ff;
+    --navbar-bg: #1a1a1a;
+    --navbar-text: #e0e0e0;
+    --navbar-border: #333333;
+    --footer-bg: #1a1a1a;
+    --footer-text: #b0b0b0;
+    --footer-link: #e0e0e0;
+    --footer-hover: #66b3ff;
+
+    /* Fragment-specific dark colors */
+    --fragment-bg: #1a1a1a;
+    --fragment-border: #4da6ff;
+    --fragment-time-color: #b0b0b0;
+    --fragment-category-bg: rgba(77, 166, 255, 0.2);
+    --fragment-category-color: #4da6ff;
+
+    /* Card and UI element dark colors */
+    --card-bg: #1a1a1a;
+    --border-color: #333333;
+    --muted-text: #b0b0b0;
+    --code-bg: #1a1a1a;
+    --blockquote-color: #b0b0b0;
+  }
+}
+
+/* Manual dark theme class (for toggle functionality) */
+body.dark-theme {
+  --bg-color: #1a1a1a !important;
+  --text-color: #e0e0e0 !important;
+  --link-color: #4da6ff !important;
+  --hover-color: #66b3ff !important;
+  --navbar-bg: #1a1a1a !important;
+  --navbar-text: #e0e0e0 !important;
+  --navbar-border: #333333 !important;
+  --footer-bg: #1a1a1a !important;
+  --footer-text: #b0b0b0 !important;
+  --footer-link: #e0e0e0 !important;
+  --footer-hover: #66b3ff !important;
+
+  /* Fragment-specific dark colors */
+  --fragment-bg: #1a1a1a !important;
+  --fragment-border: #4da6ff !important;
+  --fragment-time-color: #b0b0b0 !important;
+  --fragment-category-bg: rgba(77, 166, 255, 0.2) !important;
+  --fragment-category-color: #4da6ff !important;
+
+  /* Card and UI element dark colors */
+  --card-bg: #1a1a1a !important;
+  --border-color: #333333 !important;
+  --muted-text: #b0b0b0 !important;
+  --code-bg: #1a1a1a !important;
+  --blockquote-color: #b0b0b0 !important;
+}
+
+/* Manual light theme class (to override system dark preference) */
+body.light-theme {
+  --bg-color: {{ site.page-col | default: "#FFFFFF" }} !important;
+  --text-color: {{ site.text-col | default: "#404040" }} !important;
+  --link-color: {{ site.link-col | default: "#008AFF" }} !important;
+  --hover-color: {{ site.hover-col | default: "#0085A1" }} !important;
+  --navbar-bg: {{ site.navbar-col | default: "#EAEAEA" }} !important;
+  --navbar-text: {{ site.navbar-text-col | default: "#404040" }} !important;
+  --navbar-border: {{ site.navbar-border-col | default: "#DDDDDD" }} !important;
+  --footer-bg: {{ site.footer-col | default: "#EAEAEA" }} !important;
+  --footer-text: {{ site.footer-text-col | default: "#777777" }} !important;
+  --footer-link: {{ site.footer-link-col | default: "#404040" }} !important;
+  --footer-hover: {{ site.footer-hover-col | default: "#0085A1" }} !important;
+
+  /* Fragment-specific light colors */
+  --fragment-bg: #f8f9fa !important;
+  --fragment-border: #008AFF !important;
+  --fragment-time-color: #666 !important;
+  --fragment-category-bg: rgba(0, 138, 255, 0.1) !important;
+  --fragment-category-color: #008AFF !important;
+
+  /* Card and UI element light colors */
+  --card-bg: #ffffff !important;
+  --border-color: #dee2e6 !important;
+  --muted-text: #6c757d !important;
+  --code-bg: #f8f9fa !important;
+  --blockquote-color: #808080 !important;
+}
+
+/* Apply CSS variables to existing elements */
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--link-color) !important;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--hover-color) !important;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: var(--navbar-bg) !important;
+  border-bottom-color: var(--navbar-border) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+  color: var(--navbar-text) !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
+  background-color: var(--navbar-bg) !important;
+  color: var(--navbar-text) !important;
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: var(--navbar-border) !important;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--footer-bg) !important;
+  color: var(--footer-text) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer a {
+  color: var(--footer-link) !important;
+}
+
+.footer a:hover {
+  color: var(--footer-hover) !important;
+}
+
+/* Blockquotes */
+blockquote {
+  color: var(--blockquote-color) !important;
+  border-left-color: var(--border-color) !important;
+}
+
+/* Code blocks */
+pre, code {
+  background-color: var(--code-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Cards and content containers */
+.card, .post-preview, .blog-post {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Fragment-specific styles */
+.fragment-item {
+  background: var(--fragment-bg) !important;
+  border-left-color: var(--fragment-border) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.fragment-time {
+  color: var(--fragment-time-color) !important;
+}
+
+.fragment-category {
+  color: var(--fragment-category-color) !important;
+  background: var(--fragment-category-bg) !important;
+}
+
+.fragments-top-filters,
+.fragments-bottom-controls {
+  background: var(--fragment-bg) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Form elements */
+input, select, textarea {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--link-color) !important;
+  box-shadow: 0 0 0 0.2rem var(--fragment-category-bg) !important;
+}
+
+/* Pagination */
+.pagination .page-link {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--link-color) !important;
+  border-color: var(--link-color) !important;
+}
+
+.pagination .page-link:hover {
+  background-color: var(--fragment-bg) !important;
+  border-color: var(--link-color) !important;
+}
+
+/* Selection colors */
+::-moz-selection {
+  background-color: var(--hover-color) !important;
+}
+
+::selection {
+  background-color: var(--hover-color) !important;
+}
+
+/* Images - adjust for dark theme */
+@media (prefers-color-scheme: dark) {
+  img {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  img:hover {
+    opacity: 1;
+  }
+}
+
+body.dark-theme img {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-theme img:hover {
+  opacity: 1;
+}
+
+/* Ensure images are fully visible in light theme */
+body.light-theme img {
+  opacity: 1 !important;
+}
+
+/* Tables */
+table {
+  color: var(--text-color) !important;
+}
+
+table th,
+table td {
+  border-color: var(--border-color) !important;
+}
+
+table thead th {
+  background-color: var(--fragment-bg) !important;
+}
+
+/* Alerts and notifications */
+.alert {
+  background-color: var(--fragment-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Navbar brand container */
+.navbar-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Navbar theme toggle button */
+.navbar-theme-toggle {
+  background: transparent;
+  border: 1px solid var(--navbar-border);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+  color: var(--navbar-text);
+  opacity: 0.8;
+}
+
+.navbar-theme-toggle:hover {
+  background: var(--navbar-border);
+  opacity: 1;
+  transform: scale(1.05);
+  border-color: var(--link-color);
+}
+
+.navbar-theme-toggle:focus {
+  outline: none;
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 0.2rem var(--fragment-category-bg);
+}
+
+/* Responsive adjustments for navbar theme button */
+@media (max-width: 1199px) {
+  .navbar-theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-brand-container {
+    gap: 0.5rem;
+  }
+
+  .navbar-theme-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand-container {
+    gap: 0.4rem;
+  }
+
+  .navbar-theme-toggle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    border-width: 1px;
+  }
+}
+
+/* Ensure theme button stays visible on mobile */
+@media (max-width: 575px) {
+  .navbar-brand-container {
+    gap: 0.3rem;
+  }
+
+  .navbar-theme-toggle {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+    min-width: 26px; /* Prevent shrinking */
+    flex-shrink: 0; /* Prevent flex shrinking */
+  }
+
+  /* Adjust navbar brand font size if needed */
+  .navbar-brand-container .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+/* Adjust navbar brand spacing when theme toggle is present */
+.navbar-brand-container .navbar-brand {
+  margin-right: 0;
+}
+
+/* Footer dark theme styles */
+footer {
+  background-color: var(--footer-bg) !important;
+  color: var(--footer-text) !important;
+  border-top: 1px solid var(--border-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.beautiful-jekyll-footer {
+  background-color: var(--footer-bg) !important;
+}
+
+/* Footer text and links */
+footer .copyright {
+  color: var(--footer-text) !important;
+}
+
+footer .theme-by {
+  color: var(--footer-text) !important;
+}
+
+footer a,
+footer .footer-links a {
+  color: var(--footer-link) !important;
+  transition: color 0.3s ease;
+}
+
+footer a:hover,
+footer .footer-links a:hover {
+  color: var(--footer-hover) !important;
+}
+
+/* Social media icons in footer */
+.footer-links .fa-stack .fa-circle {
+  color: var(--footer-text) !important;
+  transition: color 0.3s ease;
+}
+
+.footer-links .fa-stack:hover .fa-circle {
+  color: var(--link-color) !important;
+}
+
+.footer-links .fa-stack .fa-inverse {
+  color: var(--footer-bg) !important;
+}
+
+/* Ensure social icons work properly in dark theme */
+.footer-links li a:hover .fa-stack .fa-circle {
+  color: var(--link-color) !important;
+}
+
+.footer-links li a:hover .fa-stack .fa-inverse {
+  color: var(--footer-bg) !important;
+}
+
+/* Additional background adjustments for harmony */
+.container, .container-md, .container-lg, .container-xl {
+  background-color: transparent !important;
+}
+
+/* Additional footer elements */
+.footer-custom-content {
+  color: var(--footer-text) !important;
+}
+
+.author-site a {
+  color: var(--footer-link) !important;
+}
+
+.author-site a:hover {
+  color: var(--footer-hover) !important;
+}

@@ -52,25 +52,25 @@ subtitle: 灵感如风，随性而致
 .fragment-item {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  border-left: 3px solid #008AFF;
-  background: #f8f9fa;
+  border-left: 3px solid var(--fragment-border, #008AFF);
+  background: var(--fragment-bg, #f8f9fa);
   border-radius: 0 8px 8px 0;
 }
 
 .fragment-time {
-  color: #666;
+  color: var(--fragment-time-color, #666);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-family: 'Courier New', monospace;
 }
 
 .fragment-category {
-  color: #008AFF;
+  color: var(--fragment-category-color, #008AFF);
   font-size: 0.8rem;
   font-weight: 500;
   margin-left: 1rem;
   padding: 0.2rem 0.6rem;
-  background: rgba(0, 138, 255, 0.1);
+  background: var(--fragment-category-bg, rgba(0, 138, 255, 0.1));
   border-radius: 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segui UI', sans-serif;
 }
@@ -147,7 +147,7 @@ subtitle: 灵感如风，随性而致
 .fragments-top-filters {
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
-  background: #f8f9fa;
+  background: var(--fragment-bg, #f8f9fa);
   border-radius: 8px;
 }
 
@@ -162,7 +162,7 @@ subtitle: 灵感如风，随性而致
 .fragments-bottom-controls {
   margin-top: 3rem;
   padding: 1.5rem 2rem;
-  background: #f8f9fa;
+  background: var(--fragment-bg, #f8f9fa);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -200,8 +200,8 @@ subtitle: 灵感如风，随性而致
 }
 
 .fragments-pagination .page-item.active .page-link {
-  background-color: #008AFF;
-  border-color: #008AFF;
+  background-color: var(--link-color, #008AFF);
+  border-color: var(--link-color, #008AFF);
 }
 
 @media (max-width: 768px) {
