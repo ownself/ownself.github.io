@@ -4,12 +4,8 @@ title: 拾言
 subtitle: 灵感如风，随性而致
 ---
 
-<div class="fragments-container" id="fragmentsContainer">
-  <!-- 拾言内容将通过JavaScript动态加载 -->
-</div>
-
-<!-- 底部导航控制 -->
-<div class="fragments-bottom-controls">
+<!-- 顶部筛选控制 -->
+<div class="fragments-top-filters">
   <div class="fragments-filters">
     <div class="fragments-filter">
       <label for="yearFilter">按年份筛选：</label>
@@ -25,7 +21,14 @@ subtitle: 灵感如风，随性而致
       </select>
     </div>
   </div>
+</div>
 
+<div class="fragments-container" id="fragmentsContainer">
+  <!-- 拾言内容将通过JavaScript动态加载 -->
+</div>
+
+<!-- 底部分页控制 -->
+<div class="fragments-bottom-controls">
   <div class="fragments-pagination-info">
     <span id="fragmentsInfo">显示第 <span id="currentStart">1</span>-<span id="currentEnd">50</span> 条，共 <span id="totalFragments">0</span> 条</span>
   </div>
@@ -59,6 +62,17 @@ subtitle: 灵感如风，随性而致
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-family: 'Courier New', monospace;
+}
+
+.fragment-category {
+  color: #008AFF;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(0, 138, 255, 0.1);
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segui UI', sans-serif;
 }
 
 .fragment-content {
@@ -129,7 +143,22 @@ subtitle: 灵感如风，随性而致
   color: #bbb;
 }
 
-/* 底部导航控制样式 */
+/* 顶部筛选控制样式 */
+.fragments-top-filters {
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.fragments-filters {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* 底部分页控制样式 */
 .fragments-bottom-controls {
   margin-top: 3rem;
   padding: 1.5rem 2rem;
@@ -140,12 +169,6 @@ subtitle: 灵感如风，随性而致
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-.fragments-filters {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
 }
 
 .fragments-filter {
@@ -190,6 +213,16 @@ subtitle: 灵感如风，随性而致
   .fragment-img {
     max-width: 150px;
     max-height: 150px;
+  }
+
+  .fragment-category {
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .fragments-top-filters {
+    padding: 1.5rem 1rem;
   }
 
   .fragments-bottom-controls {
@@ -424,7 +457,7 @@ function displayFragments() {
       .join('');
 
     fragmentDiv.innerHTML = `
-      <div class="fragment-time">${fragment.formatted_time}</div>
+      <div class="fragment-time">${fragment.formatted_time} <span class="fragment-category">${fragment.category}</span></div>
       <div class="fragment-content">
         ${formattedContent}
         ${imagesHtml}
