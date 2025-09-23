@@ -104,12 +104,15 @@ subtitle: 灵感如风，随性而致
 .modal-content {
   margin: auto;
   display: block;
-  max-width: 90%;
-  max-height: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .close {
@@ -412,10 +415,18 @@ function displayFragments() {
       imagesHtml = `<div class="fragment-images">${imageElements}</div>`;
     }
 
+    // 处理多行内容，将换行符转换为<br>标签，并保持段落结构
+    const formattedContent = fragment.content
+      .split('\n\n')  // 按双换行符分割段落
+      .map(paragraph => paragraph.trim())
+      .filter(paragraph => paragraph.length > 0)
+      .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
+      .join('');
+
     fragmentDiv.innerHTML = `
       <div class="fragment-time">${fragment.formatted_time}</div>
       <div class="fragment-content">
-        <p>${fragment.content}</p>
+        ${formattedContent}
         ${imagesHtml}
       </div>
     `;
