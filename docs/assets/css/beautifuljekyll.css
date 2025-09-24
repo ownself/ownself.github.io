@@ -1141,3 +1141,15 @@ pre {
     display: inline-block;
   }
 }
+
+/* --- Post Category Styles --- */
+.post-category {
+  color: var(--link-color, #008AFF);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--fragment-category-bg, rgba(0, 138, 255, 0.1));
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segui UI', sans-serif;
+}

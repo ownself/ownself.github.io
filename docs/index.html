@@ -4,10 +4,48 @@ layout: page
 
 {% assign posts = paginator.posts %}
 
+<!-- 隐藏的全部文章数据容器 -->
+<script type="application/json" id="allPostsData">
+{
+  "posts": [
+    {% for post in site.posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": "{{ post.url | absolute_url }}",
+      "date": "{{ post.date | date: '%B %-d, %Y' }}",
+      "categories": {{ post.categories | jsonify }},
+      "excerpt": {{ post.excerpt | strip_html | truncatewords: 50 | jsonify }},
+      {% if post.thumbnail-img %}
+      "thumbnail": "{{ post.thumbnail-img | absolute_url }}",
+      {% elsif post.cover-img %}
+        {% if post.cover-img.first %}
+      "thumbnail": "{{ post.cover-img[0].first.first | absolute_url }}",
+        {% else %}
+      "thumbnail": "{{ post.cover-img | absolute_url }}",
+        {% endif %}
+      {% endif %}
+      "tags": {{ post.tags | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<!-- 类别筛选导航条 -->
+<div class="category-filter-bar">
+  <div class="category-filter">
+    <label for="categoryFilter">按类别筛选：</label>
+    <select id="categoryFilter" onchange="filterPostsByCategory()">
+      <option value="all">全部类别</option>
+      <!-- 类别选项将通过JavaScript动态生成 -->
+    </select>
+  </div>
+</div>
+
 <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
 <ul class="posts-list list-unstyled" role="list">
   {% for post in posts %}
-  <li class="post-preview">
+  <li class="post-preview" data-categories="{% for category in post.categories %}{{ category | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
     <article>
 
       {%- capture thumbnail -%}
@@ -47,6 +85,11 @@ layout: page
       <p class="post-meta">
         {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
         Posted on {{ post.date | date: date_format }}
+        {% if post.categories.size > 0 %}
+          {% for category in post.categories %}
+            <span class="post-category">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        {% endif %}
       </p>
 
       {% if thumbnail != "" %}
@@ -96,16 +139,462 @@ layout: page
 </ul>
 
 {% if paginator.total_pages > 1 %}
+<!-- 分页信息 -->
+<div class="pagination-info">
+  <span>显示第 {{ paginator.per_page | times: paginator.page | minus: paginator.per_page | plus: 1 }}-{{ paginator.per_page | times: paginator.page | at_most: paginator.total_posts }} 篇，共 {{ paginator.total_posts }} 篇文章</span>
+</div>
+
 <ul class="pagination main-pager">
+  <!-- 上一页 -->
   {% if paginator.previous_page %}
   <li class="page-item previous">
-    <a class="page-link" href="{{ paginator.previous_page_path | absolute_url }}">&larr; Newer Posts</a>
+    <a class="page-link" href="{{ paginator.previous_page_path | absolute_url }}">&larr; 上一页</a>
   </li>
   {% endif %}
+
+  <!-- 页码显示 -->
+  {% assign start_page = paginator.page | minus: 2 | at_least: 1 %}
+  {% assign end_page = paginator.page | plus: 2 | at_most: paginator.total_pages %}
+
+  <!-- 显示第一页 -->
+  {% if start_page > 1 %}
+  <li class="page-item">
+    {% if paginator.page == 1 %}
+      <span class="page-link">1</span>
+    {% else %}
+      <a class="page-link" href="{{ '/' | absolute_url }}">1</a>
+    {% endif %}
+  </li>
+  {% if start_page > 2 %}
+  <li class="page-item disabled"><span class="page-link">...</span></li>
+  {% endif %}
+  {% endif %}
+
+  <!-- 显示当前页面前后的页码 -->
+  {% for page_num in (start_page..end_page) %}
+  <li class="page-item{% if page_num == paginator.page %} active{% endif %}">
+    {% if page_num == paginator.page %}
+      <span class="page-link">{{ page_num }}</span>
+    {% elsif page_num == 1 %}
+      <a class="page-link" href="{{ '/' | absolute_url }}">{{ page_num }}</a>
+    {% else %}
+      <a class="page-link" href="{{ '/page' | append: page_num | absolute_url }}">{{ page_num }}</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+
+  <!-- 显示最后一页 -->
+  {% if end_page < paginator.total_pages %}
+  {% assign total_pages_minus_1 = paginator.total_pages | minus: 1 %}
+  {% if end_page < total_pages_minus_1 %}
+  <li class="page-item disabled"><span class="page-link">...</span></li>
+  {% endif %}
+  <li class="page-item">
+    <a class="page-link" href="{{ '/page' | append: paginator.total_pages | absolute_url }}">{{ paginator.total_pages }}</a>
+  </li>
+  {% endif %}
+
+  <!-- 下一页 -->
   {% if paginator.next_page %}
   <li class="page-item next">
-    <a class="page-link" href="{{ paginator.next_page_path | absolute_url }}">Older Posts &rarr;</a>
+    <a class="page-link" href="{{ paginator.next_page_path | absolute_url }}">下一页 &rarr;</a>
   </li>
   {% endif %}
 </ul>
+
+<style>
+.pagination-info {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-category {
+  color: var(--link-color, #008AFF);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--fragment-category-bg, rgba(0, 138, 255, 0.1));
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segui UI', sans-serif;
+}
+
+/* 类别筛选导航条样式 */
+.category-filter-bar {
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--fragment-bg, #f8f9fa);
+  border-radius: 8px;
+}
+
+.category-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.category-filter select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.filter-info {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--link-color, #008AFF);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pagination.main-pager .page-item.active .page-link {
+  background-color: var(--link-color, #008AFF);
+  border-color: var(--link-color, #008AFF);
+  color: white;
+}
+
+.pagination.main-pager .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+@media (max-width: 768px) {
+  .pagination.main-pager {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination.main-pager .page-item {
+    font-size: 0.8rem;
+  }
+
+  .pagination-info {
+    font-size: 0.8rem;
+  }
+
+  .category-filter-bar {
+    padding: 1.5rem 1rem;
+  }
+
+  .category-filter {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filter-info {
+    font-size: 0.8rem;
+  }
+}
+</style>
+
+<script>
+// 博客文章筛选功能
+let allPosts = [];
+let filteredPosts = [];
+let currentPage = 1;
+let currentCategory = 'all';
+const postsPerPage = {{ paginator.per_page | default: 5 }};
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadAllPosts();
+  setupCategoryFilter();
+});
+
+// 加载所有文章数据
+function loadAllPosts() {
+  try {
+    const dataScript = document.getElementById('allPostsData');
+    if (!dataScript) {
+      console.error('无法找到allPostsData元素');
+      return;
+    }
+
+    const data = JSON.parse(dataScript.textContent.trim());
+    allPosts = data.posts || [];
+    console.log('成功加载', allPosts.length, '篇文章');
+  } catch (error) {
+    console.error('加载文章数据失败:', error);
+    allPosts = [];
+  }
+}
+
+// 设置类别筛选器
+function setupCategoryFilter() {
+  const categoryFilter = document.getElementById('categoryFilter');
+
+  // 收集所有类别
+  const categories = new Set();
+  allPosts.forEach(post => {
+    if (post.categories && post.categories.length > 0) {
+      post.categories.forEach(category => {
+        categories.add(category);
+      });
+    }
+  });
+
+  // 将类别按字母顺序排序
+  const sortedCategories = Array.from(categories).sort();
+
+  // 添加类别选项到选择器
+  sortedCategories.forEach(category => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
+  });
+
+  console.log('类别筛选器设置完成，共', sortedCategories.length, '个类别');
+}
+
+// 按类别筛选文章
+function filterPostsByCategory() {
+  const categoryFilter = document.getElementById('categoryFilter');
+  const selectedCategory = categoryFilter.value;
+
+  currentCategory = selectedCategory;
+  currentPage = 1; // 重置到第一页
+
+  if (selectedCategory === 'all') {
+    // 显示原始Jekyll分页内容
+    showOriginalPosts();
+  } else {
+    // 筛选并显示特定类别的文章
+    filteredPosts = allPosts.filter(post =>
+      post.categories && post.categories.includes(selectedCategory)
+    );
+    showFilteredPosts(filteredPosts, selectedCategory, currentPage);
+  }
+}
+
+// 显示原始文章列表
+function showOriginalPosts() {
+  const postsList = document.querySelector('.posts-list');
+  const pagination = document.querySelector('.pagination.main-pager');
+  const paginationInfo = document.querySelector('.pagination-info');
+
+  // 恢复原始内容的显示
+  const originalPosts = document.querySelectorAll('.post-preview');
+  originalPosts.forEach(post => {
+    post.style.display = '';
+  });
+
+  // 显示分页控件
+  if (pagination) pagination.style.display = '';
+  if (paginationInfo) paginationInfo.style.display = '';
+
+  // 隐藏筛选信息
+  updateFilterInfo('all', 0);
+}
+
+// 显示筛选后的文章
+function showFilteredPosts(posts, category, page) {
+  const postsList = document.querySelector('.posts-list');
+  const pagination = document.querySelector('.pagination.main-pager');
+  const paginationInfo = document.querySelector('.pagination-info');
+
+  // 隐藏原始文章和分页
+  const originalPosts = document.querySelectorAll('.post-preview');
+  originalPosts.forEach(post => {
+    post.style.display = 'none';
+  });
+
+  if (pagination) pagination.style.display = 'none';
+  if (paginationInfo) paginationInfo.style.display = 'none';
+
+  // 创建容器来存放筛选结果
+  let filteredContainer = document.getElementById('filtered-posts');
+  if (!filteredContainer) {
+    filteredContainer = document.createElement('div');
+    filteredContainer.id = 'filtered-posts';
+    postsList.parentNode.insertBefore(filteredContainer, postsList.nextSibling);
+  }
+
+  // 计算分页
+  const totalPosts = posts.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+  const startIndex = (page - 1) * postsPerPage;
+  const endIndex = Math.min(startIndex + postsPerPage, totalPosts);
+  const pagePosts = posts.slice(startIndex, endIndex);
+
+  // 清空并添加当前页的文章
+  filteredContainer.innerHTML = '';
+
+  if (totalPosts === 0) {
+    filteredContainer.innerHTML = '<div class="alert alert-info">该类别下暂无文章</div>';
+  } else {
+    const postsHtml = pagePosts.map(post => createPostHTML(post)).join('');
+    filteredContainer.innerHTML = `
+      <ul class="posts-list list-unstyled" role="list">${postsHtml}</ul>
+      <div id="filtered-pagination-info" class="pagination-info">
+        <span>显示第 ${startIndex + 1}-${endIndex} 篇，共 ${totalPosts} 篇文章</span>
+      </div>
+      <div id="filtered-pagination"></div>
+    `;
+
+    // 渲染筛选结果的分页控件
+    renderFilteredPagination(totalPages, page, category);
+  }
+
+  // 显示筛选信息
+  updateFilterInfo(category, totalPosts);
+}
+
+// 创建文章HTML
+function createPostHTML(post) {
+  const thumbnail = post.thumbnail || '';
+  const categories = post.categories || [];
+  const tags = post.tags || [];
+
+  const categoriesHTML = categories.length > 0 ?
+    categories.map(cat => `<span class="post-category">${cat}</span>`).join('') : '';
+
+  const tagsHTML = tags.length > 0 ?
+    `<div class="blog-tags">
+      <span>Tags:</span>
+      <ul class="d-inline list-inline" role="list">
+        ${tags.map(tag => `<li class="list-inline-item"><a href="/tags#${tag}">${tag}</a></li>`).join('')}
+      </ul>
+    </div>` : '';
+
+  const thumbnailHTML = thumbnail ?
+    `<div class="post-image post-image-small">
+      <a href="${post.url}" aria-label="Thumbnail">
+        <img src="${thumbnail}" alt="Post thumbnail">
+      </a>
+    </div>` : '';
+
+  return `
+    <li class="post-preview">
+      <article>
+        <a href="${post.url}">
+          <h2 class="post-title">${post.title}</h2>
+        </a>
+
+        <p class="post-meta">
+          Posted on ${post.date}
+          ${categoriesHTML}
+        </p>
+
+        ${thumbnailHTML}
+
+        <div class="post-entry">
+          ${post.excerpt}
+          <a href="${post.url}" class="post-read-more">[Read&nbsp;More]</a>
+        </div>
+
+        ${tagsHTML}
+      </article>
+    </li>
+  `;
+}
+
+// 渲染筛选结果的分页控件
+function renderFilteredPagination(totalPages, currentPageNum, category) {
+  const paginationContainer = document.getElementById('filtered-pagination');
+
+  if (totalPages <= 1) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
+
+  let paginationHtml = '<ul class="pagination main-pager">';
+
+  // 上一页
+  if (currentPageNum > 1) {
+    paginationHtml += `<li class="page-item previous">
+      <a class="page-link" href="#" onclick="goToFilteredPage(${currentPageNum - 1})">&larr; 上一页</a>
+    </li>`;
+  }
+
+  // 页码
+  const startPage = Math.max(1, currentPageNum - 2);
+  const endPage = Math.min(totalPages, currentPageNum + 2);
+
+  if (startPage > 1) {
+    paginationHtml += `<li class="page-item">
+      <a class="page-link" href="#" onclick="goToFilteredPage(1)">1</a>
+    </li>`;
+    if (startPage > 2) {
+      paginationHtml += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+    }
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    paginationHtml += `<li class="page-item ${i === currentPageNum ? 'active' : ''}">
+      <a class="page-link" href="#" onclick="goToFilteredPage(${i})">${i}</a>
+    </li>`;
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      paginationHtml += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+    }
+    paginationHtml += `<li class="page-item">
+      <a class="page-link" href="#" onclick="goToFilteredPage(${totalPages})">${totalPages}</a>
+    </li>`;
+  }
+
+  // 下一页
+  if (currentPageNum < totalPages) {
+    paginationHtml += `<li class="page-item next">
+      <a class="page-link" href="#" onclick="goToFilteredPage(${currentPageNum + 1})">下一页 &rarr;</a>
+    </li>`;
+  }
+
+  paginationHtml += '</ul>';
+  paginationContainer.innerHTML = paginationHtml;
+}
+
+// 跳转到筛选结果的指定页面
+function goToFilteredPage(page) {
+  currentPage = page;
+  showFilteredPosts(filteredPosts, currentCategory, currentPage);
+
+  // 滚动到页面顶部
+  const filteredContainer = document.getElementById('filtered-posts');
+  if (filteredContainer) {
+    filteredContainer.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+}
+
+// 更新筛选信息
+function updateFilterInfo(category, count) {
+  let filterInfo = document.getElementById('filter-info');
+
+  if (!filterInfo) {
+    filterInfo = document.createElement('div');
+    filterInfo.id = 'filter-info';
+    filterInfo.className = 'filter-info';
+
+    const categoryBar = document.querySelector('.category-filter-bar');
+    categoryBar.appendChild(filterInfo);
+  }
+
+  if (category === 'all') {
+    filterInfo.style.display = 'none';
+    // 同时隐藏筛选结果容器
+    const filteredContainer = document.getElementById('filtered-posts');
+    if (filteredContainer) {
+      filteredContainer.style.display = 'none';
+    }
+  } else {
+    filterInfo.style.display = 'block';
+    filterInfo.textContent = `筛选结果：${category} 类别，共 ${count} 篇文章`;
+    // 显示筛选结果容器
+    const filteredContainer = document.getElementById('filtered-posts');
+    if (filteredContainer) {
+      filteredContainer.style.display = 'block';
+    }
+  }
+}
+</script>
 {% endif %}

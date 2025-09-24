@@ -38,7 +38,13 @@
           {% endif %}
 
           {% if include.type == "post" %}
-            <span class="post-meta">Posted on {{ page.date | date: date_format }}</span>
+            <span class="post-meta">Posted on {{ page.date | date: date_format }}
+            {% if page.categories.size > 0 %}
+              {% for category in page.categories %}
+                <span class="post-category">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            {% endif %}
+            </span>
             {% if page.last-updated %}
               <span class="post-meta">
                 <span class="d-none d-md-inline middot">&middot;</span>
@@ -72,7 +78,13 @@
           {% endif %}
 
           {% if include.type == "post" %}
-            <span class="post-meta">Posted on {{ page.date | date: date_format }}</span>
+            <span class="post-meta">Posted on {{ page.date | date: date_format }}
+            {% if page.categories.size > 0 %}
+              {% for category in page.categories %}
+                <span class="post-category">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            {% endif %}
+            </span>
             {% if page.last-updated %}
               <span class="post-meta">
                 <span class="d-none d-md-inline middot">&middot;</span>
