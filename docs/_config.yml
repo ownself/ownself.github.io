@@ -30,6 +30,7 @@ author: Jimmy Liu
 ###############################################
 
 navbar-links:
+  博客: "/"
   拾言: "fragments"
   自白: "aboutme"
   搜索: "search"
