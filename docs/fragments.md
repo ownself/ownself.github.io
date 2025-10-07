@@ -83,6 +83,17 @@ subtitle: 灵感如风，随性而致
   margin-bottom: 0.5rem;
 }
 
+.fragment-content a {
+  color: var(--link-color, #008AFF);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+.fragment-content a:hover {
+  border-bottom-color: var(--link-color, #008AFF);
+}
+
 .fragment-images {
   margin-top: 1rem;
   display: flex;
@@ -252,6 +263,9 @@ subtitle: 灵感如风，随性而致
 }
 </style>
 
+<!-- 引入 marked.js 用于 Markdown 解析 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <!-- 隐藏的数据容器 -->
 <script type="application/json" id="fragmentsData">
 {
@@ -294,6 +308,16 @@ const itemsPerPage = 50;
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
+  // 配置 marked.js
+  if (typeof marked !== 'undefined') {
+    marked.setOptions({
+      breaks: true,        // 支持GitHub风格的换行
+      gfm: true,          // 启用GitHub风格的Markdown
+      headerIds: false,   // 禁用标题ID生成
+      mangle: false       // 禁用邮箱地址混淆
+    });
+  }
+  
   loadFragments();
   setupYearFilter();
   setupCategoryFilter();
@@ -448,13 +472,22 @@ function displayFragments() {
       imagesHtml = `<div class="fragment-images">${imageElements}</div>`;
     }
 
-    // 处理多行内容，将换行符转换为<br>标签，并保持段落结构
-    const formattedContent = fragment.content
-      .split('\n\n')  // 按双换行符分割段落
-      .map(paragraph => paragraph.trim())
-      .filter(paragraph => paragraph.length > 0)
-      .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
-      .join('');
+    // 处理多行内容，使用 Markdown 解析
+    let formattedContent = '';
+    if (typeof marked !== 'undefined') {
+      // 使用 marked.js 解析 Markdown
+      const htmlContent = marked.parse(fragment.content);
+      // 将解析后的内容按段落分割并包装
+      formattedContent = htmlContent;
+    } else {
+      // 降级处理：如果 marked.js 未加载，使用原来的方法
+      formattedContent = fragment.content
+        .split('\n\n')  // 按双换行符分割段落
+        .map(paragraph => paragraph.trim())
+        .filter(paragraph => paragraph.length > 0)
+        .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
+        .join('');
+    }
 
     fragmentDiv.innerHTML = `
       <div class="fragment-time">${fragment.formatted_time} <span class="fragment-category">${fragment.category}</span></div>
