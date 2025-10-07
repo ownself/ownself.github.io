@@ -310,11 +310,21 @@ const itemsPerPage = 50;
 document.addEventListener('DOMContentLoaded', function() {
   // 配置 marked.js
   if (typeof marked !== 'undefined') {
+    // 自定义渲染器，为链接添加 target="_blank"
+    const renderer = new marked.Renderer();
+    const originalLinkRenderer = renderer.link;
+    
+    renderer.link = function(href, title, text) {
+      const html = originalLinkRenderer.call(this, href, title, text);
+      return html.replace(/^<a /, '<a target="_blank" rel="noopener noreferrer" ');
+    };
+    
     marked.setOptions({
       breaks: true,        // 支持GitHub风格的换行
       gfm: true,          // 启用GitHub风格的Markdown
       headerIds: false,   // 禁用标题ID生成
-      mangle: false       // 禁用邮箱地址混淆
+      mangle: false,      // 禁用邮箱地址混淆
+      renderer: renderer  // 使用自定义渲染器
     });
   }
   
