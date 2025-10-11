@@ -77,6 +77,7 @@ subtitle: 灵感如风，随性而致
 
 .fragment-content {
   line-height: 1.6;
+  text-align: left !important;
 }
 
 .fragment-content p {
@@ -96,18 +97,34 @@ subtitle: 灵感如风，随性而致
 
 .fragment-images {
   margin-top: 1rem;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: flex-start !important;
 }
 
-.fragment-img {
+/* 单张图片：保持原始横纵比 */
+.fragment-images.single-image .fragment-img {
   max-width: 200px;
   max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin: 0 !important;
+}
+
+/* 多张图片：1:1 正方形缩略图 */
+.fragment-images.multiple-images .fragment-img {
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  margin: 0 !important;
 }
 
 .fragment-img:hover {
@@ -221,9 +238,14 @@ subtitle: 灵感如风，随性而致
     border-radius: 0;
   }
 
-  .fragment-img {
+  .fragment-images.single-image .fragment-img {
     max-width: 150px;
     max-height: 150px;
+  }
+
+  .fragment-images.multiple-images .fragment-img {
+    width: 120px;
+    height: 120px;
   }
 
   .fragment-category {
@@ -472,14 +494,15 @@ function displayFragments() {
 
     let imagesHtml = '';
     if (fragment.image) {
-      imagesHtml = `<div class="fragment-images">
+      imagesHtml = `<div class="fragment-images single-image">
         <img src="${fragment.image}" alt="拾言图片" class="fragment-img" onclick="openModal('${fragment.image}')">
       </div>`;
     } else if (fragment.images) {
+      const imageClass = fragment.images.length === 1 ? 'single-image' : 'multiple-images';
       const imageElements = fragment.images.map(img =>
         `<img src="${img}" alt="拾言图片" class="fragment-img" onclick="openModal('${img}')">`
       ).join('');
-      imagesHtml = `<div class="fragment-images">${imageElements}</div>`;
+      imagesHtml = `<div class="fragment-images ${imageClass}">${imageElements}</div>`;
     }
 
     // 处理多行内容，使用 Markdown 解析
