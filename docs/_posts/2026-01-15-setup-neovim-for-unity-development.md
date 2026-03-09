@@ -60,7 +60,19 @@ When I first configured C# support in Neovim, I used OmniSharp. The experience w
 
 I’m not entirely sure whether this was due to my own misconfiguration (since OmniSharp now also uses Roslyn internally), but at the time, it felt inadequate for serious use.
 
-Later, I discovered a relatively new Neovim LSP plugin based on Roslyn : [Roslyn.nvim](https://github.com/seblyng/roslyn.nvim)
+~~Later, I discovered a relatively new Neovim LSP plugin based on Roslyn : [Roslyn.nvim](https://github.com/seblyng/roslyn.nvim)~~
+
+> Update 2026/03/09: The original Roslyn.nvim plugin was primarily built for .NET projects. It has some issues with Unity project support, and the original author does not want to significantly change the plugin’s logic (via PRs). So I made many Unity-focused changes in my fork, and I now recommend using the version from my forked repository.
+
+At the moment, the recommended approach is to use the Roslyn LSP–based plugin [Roslyn.nvim](https://github.com/ownself/roslyn.nvim).
+
+Unity-focused optimizations and improvements in this plugin compared to the upstream repository:
+
+- A more robust sln/csproj selection mechanism
+- When it can’t automatically choose among multiple sln/csproj files, it shows a popup asking the user to select one
+- Proper support for opening multiple sln files within the same session
+- Provides `:Roslyn config` to dynamically switch the project configuration
+- By default, code guarded by inactive macros is highlighted in “gray”
 
 Its initialization speed and function navigation performance are impressive, and it also supports advanced LSP features such as inlay hints.
 
@@ -273,9 +285,21 @@ LSP全称是Language Server Protocal，主要用于不同语言的智能联想�
 
 当然我现在也不确定是不是我自己的配置不当造成的原因（因为现在OmniSharp项目实际上也是使用Roslyn作为后台了），但当时的使用体验感觉OmniSharp难堪重任
 
-直到后来发现了一个比较新的使用Roslyn的Neovim LSP插件：[Roslyn.nvim](https://github.com/seblyng/roslyn.nvim)
+~~直到后来发现了一个比较新的使用Roslyn的Neovim LSP插件：[Roslyn.nvim](https://github.com/seblyng/roslyn.nvim)~~
 
-这个插件的初始化速度以及函数跳转都令人印象深刻，而且还支持像"Inlay hints"这样的高级LSP功能
+> 2026/03/09更新：原始的Roslyn.nvim插件主要是为Dotnet项目服务，对于Unity的项目支持上是存在一些问题的，且原作者不希望大幅改变插件的逻辑（PR），所以我在我的Fork中做了很多围绕Unity的改动，现在推荐大家使用我的Fork仓库的版本
+
+目前更推荐的方式是使用基于Roslyn LSP的插件[Roslyn.nvim](https://github.com/ownself/roslyn.nvim)
+
+这个插件对比上游仓库的针对Unity的部分优化改动：
+
+- 更健壮的sln/csproj选择机制
+- 当无法在多个sln/csproj中自动选择时，会弹窗提示用户进行选择
+- 真正意义上支持同一个Session打开多个sln
+- 提供了:Roslyn config来动态切换工程的配置
+- 默认支持不生效的宏所包含的代码使用“灰色”的语法高亮
+
+此外，这个插件的初始化速度以及函数跳转都令人印象深刻，而且还支持像"Inlay hints"这样的高级LSP功能
 
 Ramboe在他的Youtube频道中有关于这个插件的非常不错的介绍：
 
